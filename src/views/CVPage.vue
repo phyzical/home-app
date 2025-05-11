@@ -224,37 +224,137 @@ import curtin from '../../src/images/education/curtin.png'
 import simplisite from '../../src/images/projects/simplisite.jpg'
 import strangeAnimals from '../../src/images/projects/strangeanimals.png'
 import agworld from '../../src/images/projects/agworld.png'
+import aaf from '../../src/images/projects/aaf.png'
 import dominoes from '../../src/images/education/dominoes.png'
+import aboutMe from './AboutMePage.vue'
+
 import { mapActions } from 'vuex'
 const pdfMakeFont = () => import('pdfmake/build/vfs_fonts')
 const pdfMake = () => import('pdfmake')
+
 export default {
   data () {
-    return {
-      cv: {
-        technicalSkills: [
-          '<div class="uk-width-1-1"><b>Programing Languages:</b></div>' +
-            '<span>PHP, JavaScript, SQL, React-Native, HTML, Css, Elixir, React, Java, Ruby, NodeJS, Python, Clojure, Scss.</span>',
-          '<div class="uk-width-1-1"><b>Operating Systems:</b></div>' +
-            '<span>OSX and Linux.</span>',
-          '<div class="uk-width-1-1"><b>Development/Artifacts:</b></div>' +
-            '<span>Jira, Confluence, Object Oriented Design, UML, Technical' +
-            'Documentation, Agile methodologies (scrum), Test Driven Development.</span>',
-          '<div class="uk-width-1-1"><b>Version Control:</b></div>' +
-            '<span>Git, Mecurial</span>',
-          '<div class="uk-width-1-1"><b>Frameworks:</b></div>' +
-            '<span>Silverstripe, VueJS, Laravel, React-Native, Ruby on rails' +
-            ' UIKit, Bootstrap, Sass, CraftCMS, Django, Unity</span>',
-          '<div class="uk-width-1-1"><b>Build Tools:</b></div>' +
-            '<span>GulpJS, Webpack, GruntJS</span>',
-          '<div class="uk-width-1-1"><b>Cloud Services:</b></div>' +
-            '<span>AWS, Shopify, Serverpilot, ISPConfig, Azure, Intune</span>',
-          '<div class="uk-width-1-1"><b>CI/CD:</b></div>' +
-            '<span>Bitbucket Pipelines, Jenkins, TeamCity, Azure Appcenter</span>',
-          '<div class="uk-width-1-1"><b>Virtualisation:</b></div>' +
-            '<span>Ansible, Vagrant, VirtualBox, Docker</span>',
+    const jobHistory = [
+      {
+        headerContent: [
+          '<b>May 2022 - Current</b>',
+          '<span>Australian Access Federation</span>',
+          '<span><b>Position:</b> Senior Software Developer</span>'
+        ],
+        image: {
+          file: aaf,
+          base64: null
+        },
+        content: [
+          '<li>Maintain various ruby based projects</li>',
+          '<li>Moved current infrastructure away from ec2 boxes over to a container based EKS environment</li>',
+          '<li>Migrated existing infrastructure on AWS away from cloudformation over to terraform</li>',
+          '<li>Implemented devop standard around metrics and alerts to empower developers to take control and ownership of their own projects</li>',
+          '<li>Refactored legacy code to be a more readable, reusable replacement</li>',
+          '<li>Upgraded various frameworks to be up to date using tools like dependabot and renovate</li>',
+          '<li>Learned a lot about maintaining legacy code and improving it</li>',
+          '<li>Enforced new CI/CD processes on github to help automate more parts of the developer workflow</li>',
+          '<li>Migrated the current deployment cycles away from a once in a blue moon to a daily cycle with the hopes to make each commit to production</li>'
+        ]
+      },
+      {
+        headerContent: [
+          '<b>September 2020 - May 2022</b>',
+          '<span>Agworld</span>',
+          '<span><b>Position:</b> Full Stack Software Developer</span>'
+        ],
+        image: {
+          file: agworld,
+          base64: null
+        },
+        content: [
+          '<li>Maintain various ruby/react based projects</li>',
+          '<li>Lead feature implementations</li>',
+          '<li>Provided experience to learning developers through guidance</li>',
+          '<li>Worked in the infrastructure team depending on cycle</li>',
+          '<li>Refactored legacy code to be a more readable, reusable replacement</li>',
+          '<li>Upgraded various frameworks to be up to date</li>',
+          '<li>Learned a lot about maintaining legacy code and improving it</li>'
+        ]
+      },
+      {
+        headerContent: [
+          '<b>May 2018 - August 2020</b>',
+          '<span>Strange Animals</span>',
+          '<span><b>Position:</b> Lead Software Developer</span>'
+        ],
+        image: {
+          file: strangeAnimals,
+          base64: null
+        },
+        content: [
+          '<li>Created and maintained various PHP based projects</li>',
+          '<li>Created and maintained various JS based work</li>',
+          '<li>Created and maintained various React-Native native mobile apps</li>',
+          '<li>Experience as tech lead</li>',
+          '<li>Provided experience to learning developers through guidance</li>',
+          '<li>Created project specification documents</li>',
+          '<li>Built infrastructure used by whole company simplify every day tasks</li>',
+          '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>'
+        ]
+      },
+      {
+        headerContent: [
+          '<b>February 2015 - May 2018</b>',
+          '<span>Simplisite Business Solutions</span>',
+          '<span><b>Position:</b> Junior Software Developer - Senior Software Developer</span>'
+        ],
+        image: {
+          file: simplisite,
+          base64: null
+        },
+        content: [
+          '<li>Created and maintained various PHP based projects</li>',
+          '<li>Created and maintained various JS based work</li>',
+          '<li>Created and maintained various React-Native native mobile apps</li>',
+          '<li>Lead small teams</li>',
+          '<li>Worked in teams</li>',
+          '<li>Created project specification documents</li>',
+          '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>'
+        ]
+      },
+      {
+        headerContent: [
+          '<b>September 2010 - February 2015</b>',
+          '<span>Dominoes, Mandurah</span>',
+          '<span><b>Position:</b> Manager/Delivery Driver</span>'
+        ],
+        image: {
+          file: dominoes,
+          base64: null
+        },
+        content: [
+          '<li>Strong customer service skills</li>',
+          '<li>Taking, processing orders and handling cash tills</li>',
+          '<li>Managerial duties</li>',
+          '<li>Team leading skills</li>',
+          '<li>Store running responsibilities</li>'
+        ]
+      }
+    ]
+
+    if (jobHistory.length % 2) {
+      jobHistory.push({
+        headerContent: [
           ''
         ],
+        image: {
+          file: null,
+          base64: null
+        },
+        content: [
+          ''
+        ]
+      })
+    }
+    return {
+      cv: {
+        technicalSkills: aboutMe.data().experiences.map(x => x.categories.length ? `<div class='uk-width-1-1'><b>${x.title}:</b></div><span>${x.categories.map(x => x.title).join(', ')}.</span>` : ``),
         additionalSkills: [
           '<li>Experience leading teams</li>',
           '<li>Experience writing technical specification documents</li>',
@@ -263,6 +363,8 @@ export default {
           '<li>Experience deriving clients wants into needs</li>',
           '<li>Experience with Test Driven Development</li>',
           '<li>Experience with CI/CD services to allow for increased automation and continuous integration</li>',
+          '<li>Experience with AWS</li>',
+          '<li>Experience with containerization and EKS</li>',
           '<li>Willingness to learn new things</li>',
           '<li>Enjoy tinkering with new technologies</li>',
           '<li>Ability to adapt to a changing environment</li>',
@@ -277,10 +379,9 @@ export default {
           '<li>Computer games</li>',
           '<li>Cars</li>',
           '<li>Tv Shows and Movies</li>',
-          '<li>Played soccer for the last 10 years</li>',
           '<li>Creating/implementing “shortcuts” for everyday life</li>',
           '<li>Doing my part to help with Open-Source projects when i can</li>',
-          '<li>Programing</li>'
+          '<li>Love Programming</li>'
         ],
         shortCourses: [
           '<b>Certificate I and II in Information Technology</b>',
@@ -300,19 +401,20 @@ export default {
               file: strangeAnimals,
               base64: null
             }
-          },
-          {
-            content: [
-              '<p>Troy Worth</p>',
-              '<p>Ex-Director, Simplisite</p>',
-              '<p>M: 0419 966 794</p>',
-              '<p>E: troyw@elitecrickettraining.com.au</p>'
-            ],
-            image: {
-              file: simplisite,
-              base64: null
-            }
           }
+          //  TODO:
+          // {
+          //   content: [
+          //     '<p>Troy Worth</p>',
+          //     '<p>Ex-Director, Simplisite</p>',
+          //     '<p>M: 0419 966 794</p>',
+          //     '<p>E: troyw@elitecrickettraining.com.au</p>'
+          //   ],
+          //   image: {
+          //     file: simplisite,
+          //     base64: null
+          //   }
+          // }
         ],
         educationHistory: [
           {
@@ -327,7 +429,7 @@ export default {
             ]
           },
           {
-            headerContent: ['<b>2010 – 2014</b>'],
+            headerContent: ['<b>2005 – 2009</b>'],
             image: {
               file: mcc,
               base64: null
@@ -338,100 +440,7 @@ export default {
             ]
           }
         ],
-        jobHistory: [
-          {
-            headerContent: [
-              '<b>September 2020 - Current</b>',
-              '<span>Agworld</span>',
-              '<span><b>Position:</b> Full Stack Software Developer</span>'
-            ],
-            image: {
-              file: agworld,
-              base64: null
-            },
-            content: [
-              '<li>Maintain various ruby/react based projects</li>',
-              '<li>Lead feature implementations</li>',
-              '<li>Provided experience to learning developers through guidance</li>',
-              '<li>Worked in the infrastructure team depending on cycle</li>',
-              '<li>Refactored legacy code to be a more readable, reusable replacement</li>',
-              '<li>Upgraded various frameworks to be up to date</li>',
-              '<li>Learned a lot about maintaining legacy code and improving it</li>'
-            ]
-          },
-          {
-            headerContent: [
-              '<b>May 2018 - August 2020</b>',
-              '<span>Strange Animals</span>',
-              '<span><b>Position:</b> Lead Software Developer</span>'
-            ],
-            image: {
-              file: strangeAnimals,
-              base64: null
-            },
-            content: [
-              '<li>Created and maintained various PHP based projects</li>',
-              '<li>Created and maintained various JS based work</li>',
-              '<li>Created and maintained various React-Native native mobile apps</li>',
-              '<li>Experience as tech lead</li>',
-              '<li>Provided experience to learning developers through guidance</li>',
-              '<li>Created project specification documents</li>',
-              '<li>Built infrastructure used by whole company simplify every day tasks</li>',
-              '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>'
-            ]
-          },
-          {
-            headerContent: [
-              '<b>February 2015 - May 2018</b>',
-              '<span>Simplisite Business Solutions</span>',
-              '<span><b>Position:</b> Junior Software Developer - Senior Software Developer</span>'
-            ],
-            image: {
-              file: simplisite,
-              base64: null
-            },
-            content: [
-              '<li>Created and maintained various PHP based projects</li>',
-              '<li>Created and maintained various JS based work</li>',
-              '<li>Created and maintained various React-Native native mobile apps</li>',
-              '<li>Lead small teams</li>',
-              '<li>Worked in teams</li>',
-              '<li>Created project specification documents</li>',
-              '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>'
-            ]
-          },
-          {
-            headerContent: [
-              '<b>September 2010 - February 2015</b>',
-              '<span>Dominoes, Mandurah</span>',
-              '<span><b>Position:</b> Manager/Delivery Driver</span>'
-            ],
-            image: {
-              file: dominoes,
-              base64: null
-            },
-            content: [
-              '<li>Strong customer service skills</li>',
-              '<li>Taking, processing orders and handling cash tills</li>',
-              '<li>Managerial duties</li>',
-              '<li>Team leading skills</li>',
-              '<li>Store running responsibilities</li>'
-            ]
-          }
-          // this is needed when tis uneven
-          // },{
-          //     headerContent: [
-          //         ''
-          //     ],
-          //     image: {
-          //         file: null,
-          //         base64: null
-          //     },
-          //     content: [
-          //         ''
-          //     ],
-          // }
-        ]
+        jobHistory
       }
     }
   },

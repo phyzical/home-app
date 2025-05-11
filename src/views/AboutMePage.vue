@@ -166,203 +166,228 @@ import react from '../images/frameworks/react.png'
 import azure from '../images/frameworks/azure.svg'
 import appcenter from '../images/frameworks/AppCenter.png'
 import github from '../images/frameworks/github.png'
+import terraform from '../images/frameworks/terraform.png'
+import cloudformation from '../images/frameworks/cloudformation.png'
 
 export default {
   name: 'AboutMe',
   data: () => {
+    const experiences = [
+      {
+        categories: [
+          {
+            image: vue,
+            title: 'Vue',
+            link: 'https://vuejs.org/'
+          },
+          {
+            image: js,
+            title: 'JS',
+            link: 'https://www.javascript.com'
+          },
+          {
+            image: nodeJS,
+            title: 'NodeJS',
+            link: 'https://nodejs.org/en/'
+          },
+          {
+            image: react,
+            title: 'React',
+            link: 'https://reactjs.org/'
+          }
+        ],
+        title: 'Javascript'
+      },
+      {
+        categories: [
+          {
+            image: uiKit,
+            title: 'UIKit',
+            link: 'https://getuikit.com'
+          },
+          {
+            image: scss,
+            title: 'SCSS',
+            link: 'https://sass-lang.com'
+          },
+          {
+            image: bootStrap,
+            title: 'Bootstrap',
+            link: 'https://getbootstrap.com'
+          },
+          {
+            image: css,
+            title: 'CSS',
+            link: 'https://css-tricks.com'
+          }
+        ],
+        title: 'UI'
+      },
+      {
+        categories: [
+          {
+            image: reactNative,
+            title: 'React Native',
+            link: 'https://facebook.github.io/react-native/'
+          }
+        ],
+        title: 'Native Apps'
+      },
+      {
+        categories: [
+          {
+            image: php,
+            title: 'PHP',
+            link: 'https://www.php.net'
+          },
+          {
+            image: ruby,
+            title: 'Ruby',
+            link: 'https://www.ruby-lang.org/en/'
+          }
+        ],
+        title: 'Backend'
+      },
+      {
+        categories: [
+          {
+            image: laravel,
+            title: 'Laravel',
+            link: 'https://laravel.com'
+          },
+          {
+            image: silverStripe,
+            title: 'Silverstripe',
+            link: 'https://www.Silverstripe.org'
+          },
+          {
+            image: craft,
+            title: 'CraftCMS',
+            link: 'https://craftcms.com'
+          },
+          {
+            image: rubyOnRails,
+            title: 'Ruby On Rails',
+            link: 'https://rubyonrails.org/'
+          }
+        ],
+        title: 'Frameworks'
+      },
+      {
+        categories: [
+          {
+            image: aws,
+            title: 'Amazon Web Services',
+            link: 'https://aws.amazon.com'
+          },
+          {
+            image: azure,
+            title: 'Microsoft Azure',
+            link: 'https://azure.microsoft.com'
+          }
+        ],
+        title: 'Cloud Services'
+      },
+      {
+        categories: [
+          {
+            image: terraform,
+            title: 'Terraform',
+            link: 'https://developer.hashicorp.com/terraform'
+          },
+          {
+            image: cloudformation,
+            title: 'Cloudformation',
+            link: 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html'
+          }
+        ],
+        title: 'DevOps'
+      },
+      {
+        categories: [
+          {
+            image: pipelines,
+            title: 'Bitbucket Pipelines',
+            link: 'https://bitbucket.org/product/features/pipelines'
+          },
+          {
+            image: jenkins,
+            title: 'Jenkins',
+            link: 'https://jenkins.io/'
+          },
+          {
+            image: teamcity,
+            title: 'TeamCity',
+            link: 'https://www.jetbrains.com/teamcity/'
+          },
+          {
+            image: appcenter,
+            title: 'Azure Appcenter',
+            link: 'https://appcenter.ms/'
+          },
+          {
+            image: github,
+            title: 'Github Actions',
+            link: 'https://github.com/features/actions'
+          }
+        ],
+        title: 'CI/CD Services'
+      },
+      {
+        categories: [
+          {
+            image: unix,
+            title: 'Linux',
+            link: 'https://www.linux.org'
+          },
+          {
+            image: osx,
+            title: 'OSX',
+            link: 'https://www.apple.com/au/macos/catalina/'
+          }
+        ],
+        title: 'OS'
+      },
+      {
+        categories: [
+          {
+            image: ansible,
+            title: 'Ansible',
+            link: 'https://www.ansible.com/'
+          },
+          {
+            image: virtualBox,
+            title: 'VirtualBox',
+            link: 'https://www.virtualbox.org/'
+          },
+          {
+            image: docker,
+            title: 'Docker',
+            link: 'https://www.docker.com/'
+          }
+        ],
+        title: 'Virtualisation'
+      },
+      {
+        categories: [
+          {
+            image: webpack,
+            title: 'Webpack',
+            link: 'https://webpack.js.org/'
+          }
+        ],
+        title: 'Build Tools'
+      }
+    ]
+
+    if (!(experiences.length % 0)) {
+      experiences.push({
+        categories: [],
+        title: ''
+      })
+    }
     return {
-      experiences: [
-        {
-          categories: [
-            {
-              image: vue,
-              title: 'Vue',
-              link: 'https://vuejs.org/'
-            },
-            {
-              image: js,
-              title: 'JS',
-              link: 'https://www.javascript.com'
-            },
-            {
-              image: nodeJS,
-              title: 'NodeJS',
-              link: 'https://nodejs.org/en/'
-            },
-            {
-              image: react,
-              title: 'React',
-              link: 'https://reactjs.org/'
-            }
-          ],
-          title: 'Javascript'
-        },
-        {
-          categories: [
-            {
-              image: uiKit,
-              title: 'UIKit',
-              link: 'https://getuikit.com'
-            },
-            {
-              image: scss,
-              title: 'SCSS',
-              link: 'https://sass-lang.com'
-            },
-            {
-              image: bootStrap,
-              title: 'Bootstrap',
-              link: 'https://getbootstrap.com'
-            },
-            {
-              image: css,
-              title: 'CSS',
-              link: 'https://css-tricks.com'
-            }
-          ],
-          title: 'UI'
-        },
-        {
-          categories: [
-            {
-              image: reactNative,
-              title: 'React Native',
-              link: 'https://facebook.github.io/react-native/'
-            }
-          ],
-          title: 'Native Apps'
-        },
-        {
-          categories: [
-            {
-              image: php,
-              title: 'PHP',
-              link: 'https://www.php.net'
-            },
-            {
-              image: ruby,
-              title: 'Ruby',
-              link: 'https://www.ruby-lang.org/en/'
-            }
-          ],
-          title: 'Backend'
-        },
-        {
-          categories: [
-            {
-              image: laravel,
-              title: 'Laravel',
-              link: 'https://laravel.com'
-            },
-            {
-              image: silverStripe,
-              title: 'Silverstripe',
-              link: 'https://www.Silverstripe.org'
-            },
-            {
-              image: craft,
-              title: 'CraftCMS',
-              link: 'https://craftcms.com'
-            },
-            {
-              image: rubyOnRails,
-              title: 'Ruby On Rails',
-              link: 'https://rubyonrails.org/'
-            }
-          ],
-          title: 'Frameworks'
-        },
-        {
-          categories: [
-            {
-              image: aws,
-              title: 'Amazon Web Services',
-              link: 'https://aws.amazon.com'
-            },
-            {
-              image: azure,
-              title: 'Microsoft Azure',
-              link: 'https://azure.microsoft.com'
-            }
-          ],
-          title: 'Cloud Services'
-        },
-        {
-          categories: [
-            {
-              image: pipelines,
-              title: 'Bitbucket Pipelines',
-              link: 'https://bitbucket.org/product/features/pipelines'
-            },
-            {
-              image: jenkins,
-              title: 'Jenkins',
-              link: 'https://jenkins.io/'
-            },
-            {
-              image: teamcity,
-              title: 'TeamCity',
-              link: 'https://www.jetbrains.com/teamcity/'
-            },
-            {
-              image: appcenter,
-              title: 'Azure Appcenter',
-              link: 'https://appcenter.ms/'
-            },
-            {
-              image: github,
-              title: 'Github Actions',
-              link: 'https://github.com/features/actions'
-            }
-          ],
-          title: 'CI/CD Services'
-        },
-        {
-          categories: [
-            {
-              image: unix,
-              title: 'Linux',
-              link: 'https://www.linux.org'
-            },
-            {
-              image: osx,
-              title: 'OSX',
-              link: 'https://www.apple.com/au/macos/catalina/'
-            }
-          ],
-          title: 'OS'
-        },
-        {
-          categories: [
-            {
-              image: ansible,
-              title: 'Ansible',
-              link: 'https://www.ansible.com/'
-            },
-            {
-              image: virtualBox,
-              title: 'VirtualBox',
-              link: 'https://www.virtualbox.org/'
-            },
-            {
-              image: docker,
-              title: 'Docker',
-              link: 'https://www.docker.com/'
-            }
-          ],
-          title: 'Virtualisation'
-        },
-        {
-          categories: [
-            {
-              image: webpack,
-              title: 'Webpack',
-              link: 'https://webpack.js.org/'
-            }
-          ],
-          title: 'Build Tools'
-        }
-      ]
+      experiences
     }
   },
   computed: {
