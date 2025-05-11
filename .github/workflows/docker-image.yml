@@ -60,3 +60,5 @@ jobs:
           platforms: linux/amd64
           labels: |
             ${{ steps.meta.outputs.labels }}
+          build-args: |
+            RELEASE_VERSION=${{ github.sha }}

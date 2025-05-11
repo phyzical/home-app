@@ -6,9 +6,8 @@ const port =
 
 const config = {
   isDev: processEnv.NODE_ENV === 'development',
-  mailgunAPIKey: processEnv.VUE_APP_MAILGUN_API_KEY,
   port,
-  appVersion: require('../../package.json').version,
+  appVersion: processEnv.RELEASE_VERSION,
   title: processEnv.VUE_APP_TITLE
 }
 

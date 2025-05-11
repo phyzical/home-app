@@ -18,4 +18,8 @@ COPY --from=build dist /usr/share/nginx/html
 
 EXPOSE 80
 
+ARG RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
+ENV RELEASE_VERSION=$RELEASE_VERSION
+
+
 CMD ["nginx", "-g", "daemon off;"]
