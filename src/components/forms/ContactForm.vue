@@ -28,12 +28,12 @@
       >
         <form-wrapper :validator="$v.form">
           <fieldset class="uk-fieldset uk-padding-small uk-grid uk-grid-medium">
-            <vue-select
+            <select-field
               v-model="form.subject"
-              :options="subjects"
-              :v="$v.form.subject"
               name="subject"
               placeholder="subject"
+              :options="subjects"
+              :v="$v.form.subject"
               class="uk-margin uk-width-1-1"
             />
             <email-field
@@ -104,7 +104,7 @@ export default {
     EmailField: () => import('./fields/EmailField'),
     NumericField: () => import('./fields/NumericField'),
     TextareaField: () => import('./fields/TextareaField'),
-    VueSelect: () => import('vue-select')
+    SelectField: () => import('./fields/SelectField.vue')
   },
   data: function () {
     return {

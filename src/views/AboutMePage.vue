@@ -12,7 +12,7 @@
         </p>
         <p>
           I have {{ yearsExperience }} years of professional experience in the
-          field and I am currently employed as a full stack developer at
+          field and I am currently employed as a senior software engineer at
           <a :href="linkedInData.job.url">
             {{ linkedInData.job.name }}
           </a>
