@@ -8,10 +8,10 @@ COPY src ./src
 COPY public ./public
 COPY vue.config.js babel.config.js .eslintrc.js .eslintignore .sass-lint.yml .stylelintrc ./
 
-RUN yarn build
-
 ARG RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
 ENV RELEASE_VERSION=$RELEASE_VERSION
+
+RUN yarn build
 
 FROM nginx:alpine
 
