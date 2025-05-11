@@ -10,6 +10,9 @@ COPY vue.config.js babel.config.js .eslintrc.js .eslintignore .sass-lint.yml .st
 
 RUN yarn build
 
+ARG RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
+ENV RELEASE_VERSION=$RELEASE_VERSION
+
 FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
@@ -20,6 +23,5 @@ EXPOSE 80
 
 ARG RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
 ENV RELEASE_VERSION=$RELEASE_VERSION
-
 
 CMD ["nginx", "-g", "daemon off;"]
