@@ -96,7 +96,6 @@
 <script>
 import { required, numeric, email } from 'vuelidate/lib/validators'
 import { mapActions } from 'vuex'
-import favicon from '../../images/favicon.jpg'
 
 export default {
   components: {
@@ -157,46 +156,17 @@ export default {
     }),
     sendMessage () {
       const self = this
-      const emailStart = `<html>
-                            <head>
-                                <meta charset="utf-8">
-                                <meta name="mobile-web-app-capable" content="yes">
-                                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                                <meta name="viewport" content="width=device-width,initial-scale=1.0">
-                                <link rel="apple-touch-icon" sizes="180x180" href="${favicon}">
-                                <link rel="icon" type="image/png" sizes="32x32" href="${favicon}">
-                                <link rel="icon" type="image/png" sizes="16x16" href="${favicon}">
-                                <link rel="mask-icon" href="${favicon}" color="#5bbad5">
-                                <meta name="msapplication-TileColor" content="#ffffff">
-                                <meta name="theme-color" content="#ffffff">
-                                <link rel="icon" href="${favicon}">
-                                <title>Jack Carpenter.dev</title>
-                                <style>
-                                    p,h1,h2 {
-                                        color: white
-                                    }
-                                    html {
-                                        background-color: black;
-                                    }
-                                </style>
-                            </head>
-                            <body>
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td align="center">`
-      const emailEnd = '<table/></tr></td></body></html>'
-      const messageSummary = `<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr><td align="center"><p>Enquiry Type: ${this.form.subject}</p></td></tr>
-                                        <tr><td align="center"><p>Name: ${this.form.name}</p></td></tr>
-                                        <tr><td align="center"><p>Phone: ${this.form.phone}</p></td></tr>
-                                        <tr><td align="center"><p>Heard About: ${this.form.heardAbout}</p></td></tr>
-                                        <tr><td align="center"><p>message: ${this.form.message}</p></td></tr>
-                                    </table>`
-      const enquiryBody = `${emailStart}
-                            ${messageSummary}
-                            ${emailEnd}`
+      const messageSummary = `Enquiry Type: ${this.form.subject}
 
-      const mailtoLink = `mailto:me@jackcarpenter.dev?subject="New Enquiry"&body=${enquiryBody}`
+                              Name: ${this.form.name}
+
+                              Phone: ${this.form.phone}
+
+                              Heard About: ${this.form.heardAbout}
+
+                              message: ${this.form.message}`
+
+      const mailtoLink = `mailto:me@jackcarpenter.dev?subject=New Enquiry&body=${encodeURIComponent(messageSummary)}`
       window.location.href = mailtoLink
       self.setContactFormMessage(['Message sent.'], true)
       self.resetForm()

@@ -32,11 +32,20 @@
             @focus="onInputFocus"
             @blur="onInputBlur"
           >
-              <option disabled value="">Select a {{ placeholder }}</option>
-              <option v-for="option in options" :key="option" :value="option">
-                {{ option }}
-              </option>
-            </select>
+            <option
+              disabled
+              value=""
+            >
+              Select a {{ placeholder }}
+            </option>
+            <option
+              v-for="option in options"
+              :key="option"
+              :value="option"
+            >
+              {{ option }}
+            </option>
+          </select>
         </template>
       </input-with-icon-container>
     </template>
