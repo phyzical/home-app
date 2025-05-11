@@ -6,9 +6,7 @@
         uk-toggle
         @click="menuClick"
     >
-        <div
-            class="menu-button-border-container"
-        >
+        <div class="menu-button-border-container">
             <div
                 class="menu-button-border"
                 :class="buttonAnimationStep >= 7 ? 'spin' : null"
@@ -50,7 +48,7 @@
     </div>
 </template>
 <script>
-import {mapActions,mapGetters} from 'vuex';
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     name: 'MenuButton',
@@ -58,55 +56,58 @@ export default {
         return {
             buttonAnimationStep: 0,
             buttonAnimationIntervalRef: null,
-            buttonAnimationForwards: true,
-        };
+            buttonAnimationForwards: true
+        }
     },
     computed: {
         ...mapGetters({
             isLoading: 'isLoading'
         }),
-        containerClass: function() {
-            let className = '';
+        containerClass: function () {
+            let className = ''
             if (this.hideLine(7)) {
-                className = 'glow-rings';
-            } else if (this.buttonAnimationStep >= 0 && this.buttonAnimationStep <= 2) {
-                className = 'glow-lines';
+                className = 'glow-rings'
+            } else if (
+                this.buttonAnimationStep >= 0 &&
+        this.buttonAnimationStep <= 2
+            ) {
+                className = 'glow-lines'
             }
-            return className;
+            return className
         }
     },
-    mounted() {
+    mounted () {
         const progressAnimation = () => {
             if (this.buttonAnimationForwards) {
-                this.buttonAnimationStep++;
+                this.buttonAnimationStep++
                 if (this.buttonAnimationStep >= 9) {
-                    this.buttonAnimationForwards = false;
+                    this.buttonAnimationForwards = false
                 }
             } else {
-                this.buttonAnimationStep--;
+                this.buttonAnimationStep--
                 if (this.buttonAnimationStep <= 0) {
-                    this.buttonAnimationForwards = true;
+                    this.buttonAnimationForwards = true
                 }
             }
-        };
+        }
         setTimeout(() => {
-            progressAnimation();
-            this.buttonAnimationIntervalRef = setInterval(progressAnimation,3000);
-        },1000)
+            progressAnimation()
+            this.buttonAnimationIntervalRef = setInterval(progressAnimation, 3000)
+        }, 1000)
     },
     methods: {
-        menuClick: function(){
+        menuClick: function () {
             setTimeout(() => {
-                this.doLoading(1);
-            },100)
+                this.doLoading(1)
+            }, 100)
         },
         ...mapActions({
             doLoading: 'isLoading'
         }),
         hideLine: function (stepNumber) {
-            stepNumber = this.buttonAnimationForwards ? stepNumber : stepNumber + 1;
-            return this.buttonAnimationStep >= stepNumber;
-        },
+            stepNumber = this.buttonAnimationForwards ? stepNumber : stepNumber + 1
+            return this.buttonAnimationStep >= stepNumber
+        }
     }
 }
 </script>

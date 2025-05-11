@@ -1,25 +1,23 @@
+import generateStore from './store'
+import config from './config'
 
-import generateStore from './store';
-import config from './config';
-
-export function currentYear() {
-    return new Date().getFullYear();
+export function currentYear () {
+    return new Date().getFullYear()
 }
 
-let store;
+let store
 
-export function getStore() {
+export function getStore () {
     if (!store) {
         store = generateStore()
     }
-    return store;
+    return store
 }
 
-export function getConfig() {
-    return config;
+export function getConfig () {
+    return config
 }
 
-
-export function getRouter(context) {
-    return context.$router;
+export function getRouter (context) {
+    return context.$router
 }

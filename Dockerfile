@@ -5,7 +5,6 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 COPY src ./src
-COPY scripts ./scripts
 COPY public ./public
 COPY vue.config.js babel.config.js .eslintrc.js .eslintignore .sass-lint.yml .stylelintrc ./
 

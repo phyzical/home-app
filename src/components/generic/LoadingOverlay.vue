@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import 'vue-loading-overlay/dist/vue-loading.css';
+import 'vue-loading-overlay/dist/vue-loading.css'
 import { mapGetters } from 'vuex'
-const Loading = () =>  import('vue-loading-overlay');
+const Loading = () => import('vue-loading-overlay')
 export default {
     components: {
         Loading
@@ -42,37 +42,35 @@ export default {
             type: Boolean,
             default: true
         },
-        loaderType : {
+        loaderType: {
             type: String,
-            default : 'dots'
+            default: 'dots'
         },
-        beforeMessage : {
+        beforeMessage: {
             type: String,
-            default : null
+            default: null
         },
-        afterMessage : {
+        afterMessage: {
             type: String,
-            default : null
+            default: null
         }
     },
     computed: {
         hasCustomLoader () {
             return !!this.$slots['custom-loader']
         },
-        ...mapGetters([
-            'isLoading'
-        ])
-    },
+        ...mapGetters(['isLoading'])
+    }
 }
 </script>
 
 <!-- This guy is why your loading message no longer exists -->
 <style type="text/css">
-    .lds-ellipsis {
-        display: none;
-    }
+.lds-ellipsis {
+  display: none;
+}
 
-    #app{
-        display: block;
-    }
+#app {
+  display: block;
+}
 </style>

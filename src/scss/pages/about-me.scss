@@ -2,17 +2,17 @@
   .sign {
     $color-1: random_main-color();
     $color-2: random_main-color(($color-1));
-    $color-3: random_main-color(($color-1,$color-2));
-    @include neon-sign(about-me,$neon-off,$color-1,$color-2,$color-3);
+    $color-3: random_main-color(($color-1, $color-2));
+    @include neon-sign(about-me, $neon-off, $color-1, $color-2, $color-3);
   }
   .arrow {
     height: 300px;
-   margin-top: 100px;
+    margin-top: 100px;
     position: relative;
     transform: rotate(-90deg);
     $color-1: random_main-color();
     $color-2: random_main-color(($color-1));
-    $color-3: random_main-color(($color-1,$color-2));
+    $color-3: random_main-color(($color-1, $color-2));
     svg {
       height: 100%;
       width: 100%;
@@ -23,52 +23,62 @@
         stroke: $white;
         stroke-opacity: 60%;
         stroke-width: 0.25px;
-        transition: fill,filter;
+        transition: fill, filter;
       }
       &:nth-child(2) {
-        animation: bouncy-left-one 6s 0s infinite linear, one-svg infinite 3s 8s !important;
+        animation:
+          bouncy-left-one 6s 0s infinite linear,
+          one-svg infinite 3s 8s !important;
         left: 0;
         position: absolute;
         top: 0;
         g {
-          @include g-flicker(one-g,$color-1,$neon-off, 3s, 8s)
+          @include g-flicker(one-g, $color-1, $neon-off, 3s, 8s);
         }
-        @include bouncy-left(one,0);
-        @include svg-flicker(one-svg,$color-1,$neon-off, 3s, 8s)
+        @include bouncy-left(one, 0);
+        @include svg-flicker(one-svg, $color-1, $neon-off, 3s, 8s);
       }
       &:nth-child(4) {
-        animation: bouncy-left-two 6s 2s infinite linear, two-svg infinite 3s 4s !important;
+        animation:
+          bouncy-left-two 6s 2s infinite linear,
+          two-svg infinite 3s 4s !important;
         left: 45px;
         position: absolute;
         top: 0;
         g {
-          @include g-flicker(two-g,$color-2,$neon-off,  3s, 4s)
+          @include g-flicker(two-g, $color-2, $neon-off, 3s, 4s);
         }
-        @include bouncy-left(two,45px);
-        @include svg-flicker(two-svg,$color-2,$neon-off, 3s, 4s)
+        @include bouncy-left(two, 45px);
+        @include svg-flicker(two-svg, $color-2, $neon-off, 3s, 4s);
       }
       &:nth-child(6) {
-        animation: bouncy-left-three 6s 4s infinite linear, three-svg infinite 3s 0s !important;
+        animation:
+          bouncy-left-three 6s 4s infinite linear,
+          three-svg infinite 3s 0s !important;
         left: 90px;
         position: absolute;
         top: 0;
         g {
-          @include g-flicker(three-g,$color-3,$neon-off, 3s, 0s)
+          @include g-flicker(three-g, $color-3, $neon-off, 3s, 0s);
         }
-        @include bouncy-left(three,90px);
-        @include svg-flicker(three-svg,$color-3,$neon-off, 3s, 0s)
+        @include bouncy-left(three, 90px);
+        @include svg-flicker(three-svg, $color-3, $neon-off, 3s, 0s);
       }
     }
   }
   .experiences {
     $color-1: random_main-color();
     $color-2: random_main-color(($color-1));
-    $color-3: random_main-color(($color-1,$color-2));
-    $color-4: random_main-color(($color-1,$color-2,$color-3));
-    $color-5: random_main-color(($color-1,$color-2,$color-3,$color-4));
-    $color-6: random_main-color(($color-1,$color-2,$color-3,$color-4,$color-5));
-    $color-7: random_main-color(($color-1,$color-2,$color-3,$color-4,$color-5,$color-6));
-    .category{
+    $color-3: random_main-color(($color-1, $color-2));
+    $color-4: random_main-color(($color-1, $color-2, $color-3));
+    $color-5: random_main-color(($color-1, $color-2, $color-3, $color-4));
+    $color-6: random_main-color(
+      ($color-1, $color-2, $color-3, $color-4, $color-5)
+    );
+    $color-7: random_main-color(
+      ($color-1, $color-2, $color-3, $color-4, $color-5, $color-6)
+    );
+    .category {
       color: $neon-off;
       text-align: center;
       text-shadow: 0 0 0.05em $neon-on;
@@ -91,11 +101,12 @@
         }
       }
       .uk-slider-nav {
-        padding-bottom:10px;
-        padding-top:10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
       }
-      .language{
-        img, svg {
+      .language {
+        img,
+        svg {
           max-width: 60%;
           min-width: 30%;
           max-height: 60%;
@@ -107,7 +118,7 @@
           $color-2: random_main-color(($color-1));
           $color-3: random_main-color(($color-1, $color-2));
           $color-4: random_main-color(($color-1, $color-2, $color-3));
-          $color-5: random_main-color(($color-1, $color-2, $color-3,$color-4));
+          $color-5: random_main-color(($color-1, $color-2, $color-3, $color-4));
 
           &:nth-child(1n) {
             .image {
@@ -159,50 +170,49 @@
       }
     }
     .experience {
-      width:100%;
+      width: 100%;
       &:nth-child(1n) {
-        .category{
+        .category {
           animation: category-one-text-start 2s 2s infinite alternate;
         }
-        @include text-start(category-one,$color-1)
+        @include text-start(category-one, $color-1);
       }
       &:nth-child(2n) {
-        .category{
+        .category {
           animation: category-two-text-start 2s 2.2s infinite alternate;
         }
-        @include text-start(category-two,$color-2)
+        @include text-start(category-two, $color-2);
       }
       &:nth-child(3n) {
-        .category{
+        .category {
           animation: category-three-text-start 2s 2.4s infinite alternate;
         }
-        @include text-start(category-three,$color-3)
+        @include text-start(category-three, $color-3);
       }
       &:nth-child(4n) {
-        .category{
+        .category {
           animation: category-four-text-start 2s 2.6s infinite alternate;
         }
-        @include text-start(category-four,$color-4)
+        @include text-start(category-four, $color-4);
       }
       &:nth-child(5n) {
-        .category{
+        .category {
           animation: category-five-text-start 2s 2.8s infinite alternate;
         }
-        @include text-start(category-five,$color-5)
+        @include text-start(category-five, $color-5);
       }
       &:nth-child(6n) {
-        .category{
+        .category {
           animation: category-six-text-start 2s 3s infinite alternate;
         }
-        @include text-start(category-six,$color-6)
+        @include text-start(category-six, $color-6);
       }
       &:nth-child(7n) {
-        .category{
+        .category {
           animation: category-seven-text-start 2s 3.2s infinite alternate;
         }
-        @include text-start(category-seven,$color-7)
+        @include text-start(category-seven, $color-7);
       }
     }
   }
 }
-

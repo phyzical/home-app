@@ -1,4 +1,3 @@
-
 <template>
     <div
         id="error-modal"
@@ -27,14 +26,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { getConfig } from "../../helpers/helpers";
+import { getConfig } from '../../helpers/helpers'
 
 export default {
     computed: {
         ...mapGetters({
             message: 'errorMessage',
-            status: 'errorStatus',
-        }),
+            status: 'errorStatus'
+        })
     },
     watch: {
         message: function () {
@@ -49,12 +48,12 @@ export default {
         ...mapActions({
             updateError: 'updateError'
         }),
-        onClose() {
-            this.updateError({message: "", status: 200});
+        onClose () {
+            this.updateError({ message: '', status: 200 })
         },
-        isDevMode() {
-            return getConfig().isDev;
+        isDevMode () {
+            return getConfig().isDev
         }
-    },
+    }
 }
 </script>

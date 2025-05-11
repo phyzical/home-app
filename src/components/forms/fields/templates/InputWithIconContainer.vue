@@ -3,7 +3,7 @@
         <slot name="label" />
         <div
             class="input-wrapper"
-            :class="{'text-holder': isText}"
+            :class="{ 'text-holder': isText }"
         >
             <slot
                 v-if="!putIconAfterInput && hasIcon"
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-const Icon = () => import("./IconContainer");
+const Icon = () => import('./IconContainer')
 
 export default {
     components: { Icon },
@@ -63,8 +63,8 @@ export default {
         }
     },
     computed: {
-        hasIcon() {
-            return this.iconClass || this.icon;
+        hasIcon () {
+            return this.iconClass || this.icon
         }
     }
 }

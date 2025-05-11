@@ -1,15 +1,15 @@
-
-
 .menu-button {
   height: 100%;
   padding-right: 110px;
   $color-1: random_main-color();
   $color-2: random_main-color(($color-1));
-  $color-3: random_main-color(($color-1,$color-2));
-  $color-4: random_main-color(($color-1,$color-2,$color-3));
+  $color-3: random_main-color(($color-1, $color-2));
+  $color-4: random_main-color(($color-1, $color-2, $color-3));
   &:hover {
     .menu-button-border-container {
-      transition: background-color,box-shadow 2s;
+      transition:
+        background-color,
+        box-shadow 2s;
       :nth-child(1) {
         &.spin {
           @include neon-border($color-4, $menu-button-default);
@@ -93,12 +93,12 @@
     }
     :nth-child(odd) {
       &.spin {
-        @include spin(forward,0deg,360deg);
+        @include spin(forward, 0deg, 360deg);
       }
     }
     :nth-child(even) {
       &.spin {
-        @include spin(backward,0deg,-360deg);
+        @include spin(backward, 0deg, -360deg);
       }
     }
     .menu-button-border {
@@ -116,23 +116,25 @@
     left: 45px;
     position: relative;
     top: 65px;
-    transition: background-color,box-shadow 2s;
+    transition:
+      background-color,
+      box-shadow 2s;
     width: 45px;
     &.glow-lines {
       :nth-child(1) {
-        @include line-glow(a,1.5s,0s,$color-1,$menu-button-default);
+        @include line-glow(a, 1.5s, 0s, $color-1, $menu-button-default);
       }
 
       :nth-child(2) {
-        @include line-glow(b,1.5s,1.5s,$color-2,$menu-button-default);
+        @include line-glow(b, 1.5s, 1.5s, $color-2, $menu-button-default);
       }
 
       :nth-child(3) {
-        @include line-glow(c,1.5s,3s,$color-3,$menu-button-default);
+        @include line-glow(c, 1.5s, 3s, $color-3, $menu-button-default);
       }
 
       :nth-child(4) {
-        @include line-glow(d,1.5s,4s,$color-4,$menu-button-default);
+        @include line-glow(d, 1.5s, 4s, $color-4, $menu-button-default);
       }
     }
 
@@ -160,5 +162,3 @@
     }
   }
 }
-
-

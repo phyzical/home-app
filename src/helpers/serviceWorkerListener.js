@@ -1,16 +1,16 @@
 self.addEventListener('message', (e) => {
     if (!e.data) {
-        return;
+        return
     }
 
     switch (e.data) {
     case 'skipWaiting':
-        self.skipWaiting();
-        break;
+        self.skipWaiting()
+        break
     default:
-        break;
+        break
     }
-});
+})
 
 // todo fix workbox to fix cache things
 // workbox.clientsClaim();

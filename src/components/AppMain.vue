@@ -14,20 +14,18 @@
     </div>
 </template>
 
-
 <script>
-
 export default {
     name: 'AppMain',
     components: {
-        LoadingOverlayCustom: () => import("./generic/LoadingOverlayCustom"),
-        GenericHeader: () => import("./generic/GenericHeader"),
-        GenericFooter: () => import("./generic/GenericFooter"),
-        ErrorModal: () => import("./modals/ErrorModal")
-    },
-};
+        LoadingOverlayCustom: () => import('./generic/LoadingOverlayCustom'),
+        GenericHeader: () => import('./generic/GenericHeader'),
+        GenericFooter: () => import('./generic/GenericFooter'),
+        ErrorModal: () => import('./modals/ErrorModal')
+    }
+}
 </script>
 
 <style lang="scss">
-    @import "../scss/site.scss";
+@import "../scss/site.scss";
 </style>

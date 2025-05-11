@@ -2,16 +2,18 @@
   .sign {
     $color-1: random_main-color();
     $color-2: random_main-color(($color-1));
-    $color-3: random_main-color(($color-1,$color-2));
-    @include neon-sign(apps,$neon-off,$color-1,$color-2,$color-3);
+    $color-3: random_main-color(($color-1, $color-2));
+    @include neon-sign(apps, $neon-off, $color-1, $color-2, $color-3);
   }
-  .app-container{
+  .app-container {
     $color-1: random_main-color();
     $color-2: random_main-color(($color-1));
-    $color-3: random_main-color(($color-1,$color-2));
-    $color-4: random_main-color(($color-1,$color-2,$color-3));
-    $color-5: random_main-color(($color-1,$color-2,$color-3,$color-4));
-    $color-6: random_main-color(($color-1,$color-2,$color-3,$color-4,$color-5));
+    $color-3: random_main-color(($color-1, $color-2));
+    $color-4: random_main-color(($color-1, $color-2, $color-3));
+    $color-5: random_main-color(($color-1, $color-2, $color-3, $color-4));
+    $color-6: random_main-color(
+      ($color-1, $color-2, $color-3, $color-4, $color-5)
+    );
 
     border-radius: 30%;
     .app {
@@ -21,7 +23,7 @@
           @include neon-border($color-1, $neon-off);
           .app-text {
             animation: app-one-text-start 2s infinite alternate;
-            @include text-start(app-one,$color-1)
+            @include text-start(app-one, $color-1);
           }
         }
 
@@ -30,7 +32,7 @@
           @include neon-border($color-2, $neon-off);
           .app-text {
             animation: app-two-text-start 2s infinite alternate;
-            @include text-start(app-two,$color-2)
+            @include text-start(app-two, $color-2);
           }
         }
 
@@ -39,7 +41,7 @@
           @include neon-border($color-3, $neon-off);
           .app-text {
             animation: app-three-text-start 2s infinite alternate;
-            @include text-start(app-three,$color-3)
+            @include text-start(app-three, $color-3);
           }
         }
 
@@ -48,7 +50,7 @@
           @include neon-border($color-4, $neon-off);
           .app-text {
             animation: app-four-text-start 2s infinite alternate;
-            @include text-start(app-four,$color-4)
+            @include text-start(app-four, $color-4);
           }
         }
 
@@ -57,7 +59,7 @@
           @include neon-border($color-5, $neon-off);
           .app-text {
             animation: app-five-text-start 2s infinite alternate;
-            @include text-start(app-five,$color-5)
+            @include text-start(app-five, $color-5);
           }
         }
 
@@ -66,14 +68,14 @@
           @include neon-border($color-6, $neon-off);
           .app-text {
             animation: app-six-text-start 2s infinite alternate;
-            @include text-start(app-six,$color-6)
+            @include text-start(app-six, $color-6);
           }
         }
         .app-text {
           display: block;
         }
       }
-      .app-image{
+      .app-image {
         height: 75%;
         width: 75%;
       }

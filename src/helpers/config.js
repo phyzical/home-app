@@ -1,5 +1,8 @@
-const processEnv = process.env;
-const port = typeof processEnv.VUE_APP_PORT !== 'undefined' ? processEnv.VUE_APP_PORT : null;
+const processEnv = process.env
+const port =
+  typeof processEnv.VUE_APP_PORT !== 'undefined'
+      ? processEnv.VUE_APP_PORT
+      : null
 
 const config = {
     isDev: processEnv.NODE_ENV === 'development',

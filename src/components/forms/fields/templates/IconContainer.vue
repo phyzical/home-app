@@ -13,7 +13,6 @@
 </template>
 
 <script>
-
 export default {
     props: {
         icon: {
@@ -23,7 +22,7 @@ export default {
         iconClass: {
             type: String,
             default: null
-        },
+        }
     }
 }
 </script>

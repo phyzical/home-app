@@ -9,18 +9,16 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'App',
     components: {
-        AppMain: () => import("./components/AppMain"), 
-        AppChecker: () => import("./components/generic/AppChecker") 
+        AppMain: () => import('./components/AppMain'),
+        AppChecker: () => import('./components/generic/AppChecker')
     },
     computed: {
-        ...mapGetters([
-            'isLoading',
-        ])
+        ...mapGetters(['isLoading'])
     }
-};
+}
 </script>

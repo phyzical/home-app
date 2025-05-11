@@ -1,20 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-      <meta name="mobile-web-app-capable" content="yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-      <link rel="apple-touch-icon" sizes="180x180" href="img/icons/favicon.png">
-      <link rel="mask-icon" href="img/icons/favicon.png" color="#5bbad5">
-      <meta name="msapplication-TileColor" content="#ffffff">
-      <meta name="theme-color" content="#ffffff">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
-    <link rel="icon" href="img/icons/favicon.png">
+    <meta charset="utf-8" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/favicon.png" />
+    <link rel="mask-icon" href="img/icons/favicon.png" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/icons/favicon-16x16.png"
+    />
+    <link rel="icon" href="img/icons/favicon.png" />
     <title>Jack Carpenter.dev</title>
     <style type="text/css">
-
       .lds-ellipsis {
         display: inline-block;
         position: relative;
@@ -72,21 +81,29 @@
           transform: translate(24px, 0);
         }
       }
-      #app{
+      #app {
         display: none;
       }
     </style>
   </head>
   <body>
-  <script>
-      if (location.hash.startsWith('/')){
-          history.pushState({}, "Application entry", location.hash.substring(2));
+    <script>
+      if (location.hash.startsWith("/")) {
+        history.pushState({}, "Application entry", location.hash.substring(2));
       }
-  </script>
-  <noscript>
-      <strong>We're sorry but this website doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </script>
+    <noscript>
+      <strong
+        >We're sorry but this website doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
     </noscript>
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div id="app"></div>
   </body>
 </html>

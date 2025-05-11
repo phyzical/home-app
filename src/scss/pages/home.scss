@@ -1,18 +1,16 @@
-
 .uk-modal-footer {
   background-color: $black;
 }
 
 .home {
   height: 100vh;
-  .sign{
-    @include neon-sign(home,$neon-off,$blue,$red,$white);
+  .sign {
+    @include neon-sign(home, $neon-off, $blue, $red, $white);
     border-radius: 4vmin;
     .home-sign-text {
       padding: 0 2rem;
       text-align: center;
       span {
-
         &:focus {
           outline: none;
         }
@@ -22,7 +20,6 @@
         font-style: italic;
         font-weight: 300;
         text-transform: uppercase;
-
       }
     }
   }

@@ -6,7 +6,7 @@
         >
             <div class="uk-width-1-1 uk-text-center">
                 <div
-                    :class="'uk-alert-'+ (contactFormSuccess ? 'success' : 'danger')"
+                    :class="'uk-alert-' + (contactFormSuccess ? 'success' : 'danger')"
                     class="uk-padding-small"
                 >
                     <ul class="uk-list uk-margin-remove">
@@ -82,7 +82,7 @@
                         name="send"
                         type="submit"
                         class="uk-button uk-button-primary"
-                        :disabled="(formIsInValid || form.isDisabled)"
+                        :disabled="formIsInValid || form.isDisabled"
                         @click="sendMessage"
                     >
                         Enquire Now
@@ -94,10 +94,9 @@
 </template>
 
 <script>
-
-import { required, numeric,email } from "vuelidate/lib/validators";
-import {mapActions} from 'vuex';
-import favicon from "../../images/favicon.jpg";
+import { required, numeric, email } from 'vuelidate/lib/validators'
+import { mapActions } from 'vuex'
+import favicon from '../../images/favicon.jpg'
 
 export default {
     components: {
@@ -107,7 +106,7 @@ export default {
         TextareaField: () => import('./fields/TextareaField'),
         VueSelect: () => import('vue-select')
     },
-    data: function() {
+    data: function () {
         return {
             form: {
                 name: null,
@@ -127,7 +126,7 @@ export default {
             contactFormSuccess: true,
             contactFormMessage: [],
             mailGunApp: null
-        };
+        }
     },
     validations: {
         form: {
@@ -140,22 +139,24 @@ export default {
         }
     },
     computed: {
-        formIsInValid() {
-            return this.$v.form.$invalid || this.$v.form.$pending || this.$v.form.$error
+        formIsInValid () {
+            return (
+                this.$v.form.$invalid || this.$v.form.$pending || this.$v.form.$error
+            )
         },
-        subjectsObject() {
+        subjectsObject () {
             return this.subjects.reduce((accumulator, subject) => {
-                accumulator[subject] = subject;
-                return accumulator;
-            }, {});
+                accumulator[subject] = subject
+                return accumulator
+            }, {})
         }
     },
     methods: {
         ...mapActions({
             doLoading: 'isLoading'
         }),
-        sendMessage() {
-            const self = this;
+        sendMessage () {
+            const self = this
             const emailStart = `<html>
                             <head>
                                 <meta charset="utf-8">
@@ -182,25 +183,25 @@ export default {
                             <body>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td align="center">`;
-            const emailEnd = '<table/></tr></td></body></html>';
+                                        <td align="center">`
+            const emailEnd = '<table/></tr></td></body></html>'
             const messageSummary = `<table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr><td align="center"><p>Enquiry Type: ${this.form.subject}</p></td></tr>
                                         <tr><td align="center"><p>Name: ${this.form.name}</p></td></tr>
                                         <tr><td align="center"><p>Phone: ${this.form.phone}</p></td></tr>
                                         <tr><td align="center"><p>Heard About: ${this.form.heardAbout}</p></td></tr>
                                         <tr><td align="center"><p>message: ${this.form.message}</p></td></tr>
-                                    </table>`;
-            const enquiryBody =   `${emailStart}
+                                    </table>`
+            const enquiryBody = `${emailStart}
                             ${messageSummary}
-                            ${emailEnd}`;
+                            ${emailEnd}`
 
-            const mailtoLink = `mailto:me@jackcarpenter.dev?subject="New Enquiry"&body=${enquiryBody}`;
-            window.location.href = mailtoLink;
-            self.setContactFormMessage(["Message sent."], true);
-            self.resetForm();
+            const mailtoLink = `mailto:me@jackcarpenter.dev?subject="New Enquiry"&body=${enquiryBody}`
+            window.location.href = mailtoLink
+            self.setContactFormMessage(['Message sent.'], true)
+            self.resetForm()
         },
-        resetForm() {
+        resetForm () {
             this.form = {
                 name: null,
                 subject: null,
@@ -210,21 +211,20 @@ export default {
                 heardAbout: null,
                 isDisabled: false
             }
-            this.$v.$reset();
+            this.$v.$reset()
         },
-        setContactFormMessage(message, isSuccess) {
-            this.contactFormMessage = message;
-            this.contactFormSuccess = isSuccess;
+        setContactFormMessage (message, isSuccess) {
+            this.contactFormMessage = message
+            this.contactFormSuccess = isSuccess
         }
-    },
+    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
-    .error-message {
-        color: red;
-        font-size: 0.6em;
-    }
+.error-message {
+  color: red;
+  font-size: 0.6em;
+}
 </style>

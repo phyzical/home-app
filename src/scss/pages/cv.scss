@@ -10,8 +10,8 @@
     .sign {
       $color-1: random_main-color();
       $color-2: random_main-color(($color-1));
-      $color-3: random_main-color(($color-1,$color-2));
-      @include neon-sign(cv,$neon-off,$color-1,$color-2,$color-3);
+      $color-3: random_main-color(($color-1, $color-2));
+      @include neon-sign(cv, $neon-off, $color-1, $color-2, $color-3);
     }
   }
   .uk-button {
@@ -19,58 +19,69 @@
     $color-2: random_main-color(($color-1));
     animation: cv-button-box-start 2s forwards;
     background: transparent;
-    color:$color-2;
-    @include box-start(cv-button,$color-1,$neon-off)
+    color: $color-2;
+    @include box-start(cv-button, $color-1, $neon-off);
   }
   .cv-container {
     $color-1: random_main-color();
     $color-2: random_main-color(($color-1));
-    $color-3: random_main-color(($color-1,$color-2));
-    $color-4: random_main-color(($color-1,$color-2,$color-3));
-    $color-5: random_main-color(($color-1,$color-2,$color-3,$color-4));
-    $color-6: random_main-color(($color-1,$color-2,$color-3,$color-4,$color-5));
-    $color-7: random_main-color(($color-1,$color-2,$color-3,$color-4,$color-5,$color-6));
+    $color-3: random_main-color(($color-1, $color-2));
+    $color-4: random_main-color(($color-1, $color-2, $color-3));
+    $color-5: random_main-color(($color-1, $color-2, $color-3, $color-4));
+    $color-6: random_main-color(
+      ($color-1, $color-2, $color-3, $color-4, $color-5)
+    );
+    $color-7: random_main-color(
+      ($color-1, $color-2, $color-3, $color-4, $color-5, $color-6)
+    );
     .uk-divider-icon {
       &:nth-child(3) {
-        @include svg-flicker(divider-one,$color-7,$neon-off,3s, 0s);
-        &::before, &::after {
-          @include neon-border($color-7,$neon-off)
+        @include svg-flicker(divider-one, $color-7, $neon-off, 3s, 0s);
+        &::before,
+        &::after {
+          @include neon-border($color-7, $neon-off);
         }
       }
       &:nth-child(5) {
-        @include svg-flicker(divider-two,$color-6,$neon-off,3s, 0s);
-        &::before, &::after {
-          @include neon-border($color-6,$neon-off)
+        @include svg-flicker(divider-two, $color-6, $neon-off, 3s, 0s);
+        &::before,
+        &::after {
+          @include neon-border($color-6, $neon-off);
         }
       }
       &:nth-child(7) {
-        @include svg-flicker(divider-three,$color-5,$neon-off,3s, 0s);
-        &::before, &::after {
-          @include neon-border($color-5,$neon-off)
+        @include svg-flicker(divider-three, $color-5, $neon-off, 3s, 0s);
+        &::before,
+        &::after {
+          @include neon-border($color-5, $neon-off);
         }
       }
       &:nth-child(9) {
-        @include svg-flicker(divider-four,$color-4,$neon-off,3s, 0s);
-        &::before, &::after {
-          @include neon-border($color-4,$neon-off)
+        @include svg-flicker(divider-four, $color-4, $neon-off, 3s, 0s);
+        &::before,
+        &::after {
+          @include neon-border($color-4, $neon-off);
         }
       }
       &:nth-child(11) {
-        @include svg-flicker(divider-five,$color-3,$neon-off,3s, 0s);
-        &::before, &::after {
-          @include neon-border($color-3,$neon-off)
+        @include svg-flicker(divider-five, $color-3, $neon-off, 3s, 0s);
+        &::before,
+        &::after {
+          @include neon-border($color-3, $neon-off);
         }
       }
       &:nth-child(13) {
-        @include svg-flicker(divider-six,$color-2,$neon-off,3s, 0s);
-        &::before, &::after {
-          @include neon-border($color-2,$neon-off)
+        @include svg-flicker(divider-six, $color-2, $neon-off, 3s, 0s);
+        &::before,
+        &::after {
+          @include neon-border($color-2, $neon-off);
         }
       }
       &:nth-child(15) {
-        @include svg-flicker(divider-seven,$color-1,$neon-off,3s, 0s);
-        &::before, &::after {
-          @include neon-border($color-1,$neon-off)
+        @include svg-flicker(divider-seven, $color-1, $neon-off, 3s, 0s);
+        &::before,
+        &::after {
+          @include neon-border($color-1, $neon-off);
         }
       }
     }
@@ -78,75 +89,80 @@
       &:nth-child(2) {
         .cv-title {
           animation: cv-title-one-text-start 2s 2s infinite alternate;
-          @include text-start(cv-title-one, $color-1)
+          @include text-start(cv-title-one, $color-1);
         }
       }
 
       &:nth-child(4) {
         .cv-title {
           animation: cv-title-two-text-start 2s 2.2s infinite alternate;
-          @include text-start(cv-title-two, $color-2)
+          @include text-start(cv-title-two, $color-2);
         }
-        &.uk-grid-divider > :not(.uk-first-column)::before, &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
-          @include neon-border($color-7,$neon-off)
+        &.uk-grid-divider > :not(.uk-first-column)::before,
+        &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+          @include neon-border($color-7, $neon-off);
         }
       }
 
       &:nth-child(6) {
         .cv-title {
           animation: cv-title-three-text-start 2s 2.4s infinite alternate;
-          @include text-start(cv-title-three, $color-3)
+          @include text-start(cv-title-three, $color-3);
         }
       }
 
       &:nth-child(8) {
         .cv-title {
           animation: cv-title-four-text-start 2s 2.6s infinite alternate;
-          @include text-start(cv-title-four, $color-4)
+          @include text-start(cv-title-four, $color-4);
         }
       }
 
       &:nth-child(10) {
         .cv-title {
           animation: cv-title-five-text-start 2s 2.8s infinite alternate;
-          @include text-start(cv-title-five, $color-5)
+          @include text-start(cv-title-five, $color-5);
         }
-        &.uk-grid-divider > :not(.uk-first-column)::before, &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
-          @include neon-border($color-4,$neon-off)
+        &.uk-grid-divider > :not(.uk-first-column)::before,
+        &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+          @include neon-border($color-4, $neon-off);
         }
       }
 
       &:nth-child(12) {
         .cv-title {
           animation: cv-title-six-text-start 2s 3s infinite alternate;
-          @include text-start(cv-title-six, $color-6)
+          @include text-start(cv-title-six, $color-6);
         }
-        &.uk-grid-divider > :not(.uk-first-column)::before, &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
-          @include neon-border($color-3,$neon-off)
+        &.uk-grid-divider > :not(.uk-first-column)::before,
+        &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+          @include neon-border($color-3, $neon-off);
         }
       }
 
       &:nth-child(14) {
         .cv-title {
           animation: cv-title-seven-text-start 2s 3.2s infinite alternate;
-          @include text-start(cv-title-seven, $color-7)
+          @include text-start(cv-title-seven, $color-7);
         }
-        &.uk-grid-divider > :not(.uk-first-column)::before, &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
-          @include neon-border($color-2,$neon-off)
+        &.uk-grid-divider > :not(.uk-first-column)::before,
+        &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+          @include neon-border($color-2, $neon-off);
         }
       }
 
       &:nth-child(16) {
         .cv-title {
           animation: cv-title-eight-text-start 2s 3.2s infinite alternate;
-          @include text-start(cv-title-eight, $color-2)
+          @include text-start(cv-title-eight, $color-2);
         }
-        &.uk-grid-divider > :not(.uk-first-column)::before, &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
-          @include neon-border($color-1,$neon-off)
+        &.uk-grid-divider > :not(.uk-first-column)::before,
+        &.uk-grid-divider.uk-grid-stack > .uk-grid-margin::before {
+          @include neon-border($color-1, $neon-off);
         }
       }
       .cv-entry {
-       text-align: center;
+        text-align: center;
       }
     }
   }

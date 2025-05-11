@@ -25,7 +25,7 @@
                         :required="required"
                         :disabled="disabled"
                         class="uk-textarea"
-                        :class="{invalid: isInvalid}"
+                        :class="{ invalid: isInvalid }"
                         rows="3"
                         :placeholder="placeholder"
                         @keyup.enter="onEnter"
@@ -39,9 +39,9 @@
 </template>
 
 <script>
-
-const FieldContainer = () => import("./templates/FieldContainer");
-const InputWithIconContainer  = () => import( "./templates/InputWithIconContainer");
+const FieldContainer = () => import('./templates/FieldContainer')
+const InputWithIconContainer = () =>
+    import('./templates/InputWithIconContainer')
 
 export default {
     components: { FieldContainer, InputWithIconContainer },
@@ -76,7 +76,7 @@ export default {
         },
         name: {
             type: String,
-            default: "name"
+            default: 'name'
         },
         validatorName: {
             type: String,
@@ -84,16 +84,15 @@ export default {
         },
         placeholder: {
             type: String,
-            default: "name"
+            default: 'name'
         },
         value: {
             type: String,
-            default: ""
+            default: ''
         },
         v: {
             type: Object,
             default: null
-
         },
         highlightInvalid: {
             type: Boolean,
@@ -110,42 +109,43 @@ export default {
     },
     computed: {
         fieldValue: {
-            get() {
-                return this.value;
+            get () {
+                return this.value
             },
-            set(value) {
-                if (this.v && !this.showErrorOnBlurOnly)
-                {
-                    this.v.$touch();
+            set (value) {
+                if (this.v && !this.showErrorOnBlurOnly) {
+                    this.v.$touch()
                 }
-                this.$emit("input", value);
+                this.$emit('input', value)
             }
         },
-        isInvalid() {
-            return this.highlightInvalid && this.v && this.v.$invalid && this.v.$dirty;
+        isInvalid () {
+            return (
+                this.highlightInvalid && this.v && this.v.$invalid && this.v.$dirty
+            )
         },
-        labelClass() {
+        labelClass () {
             return {
                 'uk-hidden': this.hideLabel
-            };
+            }
         }
     },
     methods: {
-        onEnter() {
-            this.$emit('onEnter');
+        onEnter () {
+            this.$emit('onEnter')
         },
-        onInputFocus() {
+        onInputFocus () {
             if (this.v && this.showErrorOnBlurOnly) {
-                this.v.$reset();
+                this.v.$reset()
             }
-            this.$emit('onInputFocus');
+            this.$emit('onInputFocus')
         },
-        onInputBlur() {
+        onInputBlur () {
             if (this.v && this.showErrorOnBlurOnly) {
-                this.v.$touch();
+                this.v.$touch()
             }
-            this.$emit('onInputBlur');
-        },
+            this.$emit('onInputBlur')
+        }
     }
 }
 </script>

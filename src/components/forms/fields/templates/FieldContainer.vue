@@ -7,26 +7,25 @@
 </template>
 
 <script>
-
 export default {
-    name: "FieldContainer",
+    name: 'FieldContainer',
     props: {
         className: {
             type: String,
-            default: ""
+            default: ''
         },
         name: {
             type: String,
-            default: "name"
+            default: 'name'
         },
         validatorName: {
             type: String,
             default: null
-        },
+        }
     },
     computed: {
-        formGroupNameToUse() {
-            return this.validatorName || this.name;
+        formGroupNameToUse () {
+            return this.validatorName || this.name
         }
     }
 }

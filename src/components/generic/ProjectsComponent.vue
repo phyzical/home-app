@@ -4,13 +4,13 @@
         uk-grid
     >
         <div
-            v-for="(project,i) in projects"
+            v-for="(project, i) in projects"
             :key="`project-${i}`"
             class="uk-width-1-2@m uk-width-1-1@s uk-card uk-card-small uk-card-default project"
         >
-            <div class="uk-card-header uk-align-center ">
+            <div class="uk-card-header uk-align-center">
                 <div
-                    class="uk-grid-small uk-flex-middle "
+                    class="uk-grid-small uk-flex-middle"
                     uk-grid
                 >
                     <div class="uk-width-auto">
@@ -29,9 +29,7 @@
                 </div>
             </div>
             <div class="uk-card-body">
-                <div
-                    v-html="project.body"
-                />
+                <div v-html="project.body" />
             </div>
             <div class="uk-card-footer">
                 <a
@@ -46,11 +44,10 @@
     </div>
 </template>
 <script>
-
 export default {
     name: 'ProjectsComponent',
     props: {
-        projects:{
+        projects: {
             type: Array,
             default: () => []
         }

@@ -1,21 +1,21 @@
-name: 'Renovate Dependency Check'
+name: "Renovate Dependency Check"
 on:
   workflow_dispatch:
     inputs:
       forceRecreate:
-        description: 'If you should crecreate all prs (this is break glass)'
+        description: "If you should crecreate all prs (this is break glass)"
         type: boolean
         required: false
         default: false
       logLevel:
-        description: 'Log level'
+        description: "Log level"
         type: choice
-        default: 'info'
+        default: "info"
         options:
           - info
           - debug
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: "0 */12 * * *"
 jobs:
   renovate:
     permissions:
@@ -40,6 +40,6 @@ jobs:
           configurationFile: .github/renovate-config.js
           token: ${{secrets.REPO_SCOPED_TOKEN}}
         env:
-          LOG_LEVEL: '${{ steps.vars.outputs.LOG_LEVEL }}'
-          RENOVATE_RECREATE_WHEN: '${{ steps.vars.outputs.RECREATE_PRS }}'
-          RENOVATE_REPOSITORIES: '${{ github.repository }}'
+          LOG_LEVEL: "${{ steps.vars.outputs.LOG_LEVEL }}"
+          RENOVATE_RECREATE_WHEN: "${{ steps.vars.outputs.RECREATE_PRS }}"
+          RENOVATE_REPOSITORIES: "${{ github.repository }}"
