@@ -7,7 +7,7 @@ const port =
 const config = {
   isDev: processEnv.NODE_ENV === 'development',
   port,
-  appVersion: processEnv.RELEASE_VERSION,
+  appVersion: processEnv.VUE_APP_RELEASE_VERSION,
   title: processEnv.VUE_APP_TITLE
 }
 

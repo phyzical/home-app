@@ -50,7 +50,7 @@ jobs:
           labels: |
             ${{ steps.meta.outputs.labels }}
           build-args: |
-            RELEASE_VERSION=${{ github.sha }}
+            VUE_APP_RELEASE_VERSION=${{ github.sha }}
       - name: Test and Lint
         run: docker run --rm ghcr.io/${{ github.repository }}:build yarn lint-warn
       - name: Build and push
@@ -62,5 +62,3 @@ jobs:
           platforms: linux/amd64
           labels: |
             ${{ steps.meta.outputs.labels }}
-          build-args: |
-            RELEASE_VERSION=${{ github.sha }}

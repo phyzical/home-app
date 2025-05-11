@@ -8,8 +8,8 @@ COPY src ./src
 COPY public ./public
 COPY vue.config.js babel.config.js .eslintrc.js .eslintignore .sass-lint.yml .stylelintrc ./
 
-ARG RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
-ENV RELEASE_VERSION=$RELEASE_VERSION
+ARG VUE_APP_RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
+ENV VUE_APP_RELEASE_VERSION=$VUE_APP_RELEASE_VERSION
 
 RUN yarn build
 
@@ -20,8 +20,5 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build dist /usr/share/nginx/html
 
 EXPOSE 80
-
-ARG RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
-ENV RELEASE_VERSION=$RELEASE_VERSION
 
 CMD ["nginx", "-g", "daemon off;"]
