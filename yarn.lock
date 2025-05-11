@@ -10380,10 +10380,10 @@ vue@^2:
     "@vue/compiler-sfc" "2.7.16"
     csstype "^3.1.0"
 
-vuelidate-error-extractor@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/vuelidate-error-extractor/-/vuelidate-error-extractor-2.4.0.tgz#e51d552fc8d3bcd52c9d79953a12ebe4f4f9e5d3"
-  integrity sha512-wUn+0lRpegXBzqrap/wmcGk8HNh6pgkUWzkaljlTUM2itbjpQpKMBhIM0IewADGvRRD6ialLgnArEJXn+Wavjg==
+vuelidate-error-extractor@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/vuelidate-error-extractor/-/vuelidate-error-extractor-2.4.1.tgz#f01b2787fd327e0b36c34f7a302d6b70f65ffdf7"
+  integrity sha512-lOWHn1FbrL4vSu/fiospWEZiAOegh+5lfdNl8Y1ulZnV1+TiGAEqvpbpHqSiIMfshFePYtYMbZHsIZLLF2O4Qg==
   dependencies:
     "@d_hristov/get-value" "^3.0.3"
 
