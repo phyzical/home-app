@@ -1,4 +1,4 @@
-const validationInit = (customVuelidationConfig = {}) => {
+const validationInit = () => {
     const Vue = () => import('vue')
     const vuelidate = () => import('vuelidate')
     const vuelidateErrorExtractor = () => import('vuelidate-error-extractor')
@@ -25,36 +25,12 @@ const validationInit = (customVuelidationConfig = {}) => {
             mobileNumber: 'mobile number'
         }
 
-        const customMessages = Object.prototype.hasOwnProperty.call(
-            customVuelidationConfig,
-            'messages'
-        )
-            ? customVuelidationConfig.messages
-            : {}
-        const customAttributes = Object.prototype.hasOwnProperty.call(
-            customVuelidationConfig,
-            'attributes'
-        )
-            ? customVuelidationConfig.attributes
-            : {}
-
         vuelidateErrorExtractor().then((vuelidateErrorExtractor) => {
             const templates = vuelidateErrorExtractor.templates
             VueClass.use(vuelidateErrorExtractor.default, {
-                /**
-         * Optionally provide the template in the configuration.
-         * or register like so Vue.component("FormField", templates.singleErrorExtractor.foundation6)
-         */
-                template: templates.singleErrorExtractor.foundation6, // you can also pass your own custom template
-                messages: {
-                    ...defaultMessages,
-                    ...customMessages
-                }, // error messages to use
-                attributes: {
-                    // maps form keys to actual field names
-                    ...defaultAttributes,
-                    ...customAttributes
-                }
+                template: templates.singleErrorExtractor.foundation6,
+                messages: defaultMessages,
+                attributes: defaultAttributes
             })
             VueClass.component('FormWrapper', templates.FormWrapper)
         })
