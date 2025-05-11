@@ -1,0 +1,8 @@
+.contact-me {
+  .sign {
+    $color-1: random_main-color();
+    $color-2: random_main-color(($color-1));
+    $color-3: random_main-color(($color-1,$color-2));
+    @include neon-sign(contact-me,$neon-off,$color-1,$color-2,$color-3);
+  }
+}

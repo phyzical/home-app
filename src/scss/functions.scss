@@ -1,0 +1,402 @@
+
+
+@mixin neon-panel-border($color1,$color2,$color3,$color4) {
+  background-image: linear-gradient($color1, $color2, $color3,$color4);
+  box-shadow:
+          inset 0 0 3px $white,
+          0 0 25px $color1,
+          0 calc(100vh * (25/100)) 25px $color2,
+          0 calc(100vh * (50/100)) 25px $color3,
+          0 calc(100vh * (75/100)) 25px $color4;
+}
+
+@mixin neon-border($color, $default-color) {
+  box-shadow: 0 0 5px $default-color,
+  inset 0 0 5px  $default-color,
+  0 0 10px $color,
+  inset 0 0 10px  $color,
+  0 0 20px $color,
+  inset 0 0 20px $color;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+@function random_main-color($previous: null) {
+  $elements: ($red,$purple,$teal,$blue,$green,$pink,$orange);
+  $element: nth($elements, random(length($elements)));
+  @if $previous and index($previous,$element) {
+    @return random_main-color($previous);
+  }
+  @return $element
+}
+
+@mixin svg-flicker($name,$color,$color-off, $timing, $delay) {
+  @include keyframes($name) {
+    11%,19%,25%, 31%, 41%, 46%, 54%, 56%, 100% {
+      filter: drop-shadow(0 0 8px $color);
+    }
+  0%, 10%, 20%, 24%, 55% {
+      filter: none;
+    }
+  }
+  animation: $name $timing $delay infinite;
+}
+@mixin g-flicker($name,$color,$color-off, $timing, $delay) {
+  @include keyframes($name) {
+    11%,19%,25%, 31%, 41%, 46%, 54%, 56%, 100% {
+      fill: $color;
+      stroke: $color;
+    }
+    0%, 10%, 20%, 24%, 55% {
+      fill: $grey;
+      stroke: $white;
+    }
+  }
+  animation: $name $timing $delay infinite;
+}
+
+@mixin neon-sign($name, $color-off,$box-color,$sign-color-1,$sign-color-2) {
+  animation: #{$name}-box-start 1.5s 2s forwards,
+  #{$name}-box-flicker 6.5s 2s infinite alternate;
+  border: 0.8vmin solid $color-off;
+  border-radius: 4vmin;
+  box-shadow:0 0 0 $neon-on,
+            inset 0 0 0 $neon-on,
+  0 0 0.2em $neon-on,
+  inset 0 0 0.2em $neon-on;
+  padding: 0.5em;
+  transition: box-shadow;
+  span {
+    &:focus {
+      outline: none;
+    }
+    color: $color-off;
+
+    font-size: 7vmin;
+    font-style: italic;
+    font-weight: 300;
+    text-shadow: 0 0 0.05em $neon-on;
+    text-transform: uppercase;
+
+    &:not(:last-child) {
+      &::-moz-selection {
+        background-color: $box-color;
+        color: $sign-color-1;
+      }
+
+      &::selection {
+        background-color: $box-color;
+        color: $sign-color-1;
+      }
+      &:nth-child(1) {
+        animation: #{$name}-one-text-start 1.5s 3.5s forwards;
+      }
+      &:nth-child(2) {
+        animation: #{$name}-two-text-start 1.5s 5s forwards;
+      }
+      &:nth-child(3) {
+        animation: #{$name}-three-text-start 1.5s 6.5s forwards;
+      }
+    }
+
+    &:nth-last-child(1) {
+      &::-moz-selection {
+        background-color: $box-color;
+        color: $sign-color-2;
+      }
+
+      &::selection {
+        background-color: $box-color;
+        color: $sign-color-2;
+      }
+
+      &:nth-child(1) {
+        animation: #{$name}-text-flicker 3s 3.5s infinite alternate;
+      }
+
+      &:nth-child(2) {
+        animation: #{$name}-text-flicker 3s 5s infinite alternate;
+      }
+      &:nth-child(3) {
+        animation: #{$name}-text-flicker 3s 6.5s infinite alternate;
+      }
+      &:nth-child(4) {
+        animation: #{$name}-text-flicker 3s 8s infinite alternate;
+      }
+    }
+  }
+
+  @include keyframes(#{$name}-box-flicker){
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      border: 0.8vmin solid $box-color;
+      box-shadow: 0 0 0.5em $neon-on,
+      inset 0 0 0.5em $neon-on,
+      0 0 1.5em $box-color,
+      inset 0 0 1.5em  $box-color;
+    }
+    20%, 24%, 55% {
+      border: 0.8vmin solid $color-off;
+      box-shadow:0 0 0 $neon-on,
+      inset 0 0 0 $neon-on,
+      0 0 0.2em $neon-on,
+      inset 0 0 0.2em $neon-on;
+    }
+  }
+  @include box-start($name,$box-color,$color-off);
+  @include text-start(#{$name}-one,$sign-color-1,$color-off);
+  @include text-start(#{$name}-two,$sign-color-1,$color-off);
+  @include text-start(#{$name}-three,$sign-color-1,$color-off);
+  @include keyframes(#{$name}-text-flicker) {
+    0%, 30%, 38%, 56%, 60%, 66%,69% {
+      color: $sign-color-2;
+      text-shadow: 0 0 0.05em $neon-on,
+                  0 0 0.5em $sign-color-2,
+                  0 0 0.1em $sign-color-2;
+    }
+    31%, 37%,47%, 55%, 61%, 65%,70%,100% {
+      color: $color-off;
+      text-shadow: 0 0 0.05em $neon-on;
+    }
+  }
+}
+
+@mixin static-neon-sign ($box-color,$text-color) {
+  border: 0.8vmin solid $neon-on;
+  box-shadow: 0 0 1vmin $neon-on,
+  inset 0 0 1vmin $neon-on,
+  0 0 4vmin $box-color,
+  inset 0 0 4vmin  $box-color,
+  0 0 8vmin  $box-color,
+  inset 0 0 8vmin  $box-color;
+  a {
+    text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em $text-color, 0 0 0.5em $text-color, 0 0 0.1em $text-color, 0 10px 3px $black;
+  }
+}
+
+@mixin  text-start($name,$color: $red,$color-off: $neon-off){
+  @include keyframes(#{$name}-text-start) {
+    0%, 10%,15%,25%, 31%, 41%, 46%, 54%, 56%, 100% {
+      color: $color;
+      text-shadow:  0 0 0.05em $neon-on,
+      0 0 0.5em $color,
+      0 0 0.1em $color;
+    }
+    11%,14%,26%, 30%, 42%,45%, 55% {
+      color: $color-off;
+      text-shadow: 0 0 0.05em $neon-on;
+    }
+  }
+}
+
+@mixin box-start($name,$box-color,$color-off) {
+  @include keyframes(#{$name}-box-start) {
+    0%, 10%,15%,25%, 31%, 41%, 46%, 54%, 56%, 100% {
+      border: 0.8vmin solid $box-color;
+      box-shadow: 0 0 0.5em $neon-on,
+      inset 0 0 0.5em $neon-on,
+      0 0 1.5em $box-color,
+      inset 0 0 1.5em  $box-color;
+
+    }
+    11%,14%,26%, 30%, 42%,45%, 55% {
+      border: 0.8vmin solid $color-off;
+      box-shadow:0 0 0 $neon-on,
+      inset 0 0 0 $neon-on,
+      0 0 0.2em $neon-on,
+      inset 0 0 0.2em $neon-on;
+    }
+  }
+}
+
+@mixin neon-button($name,$neon-color) {
+    // Stagger border appearances
+    animation: #{$name}-border 2s infinite;
+    border: 0.55vmin solid transparent; // We're animating border-color again
+    border-bottom-color: $grey;
+    border-left-color: $grey;
+  border-radius: 2em;
+    border-radius: 2em;
+    border-right-color: $grey;
+    border-top-color: $grey;
+    box-shadow: 0 0 0.5em $neon-on,
+    inset 0 0 0.5em $neon-on;
+    transition: border-top-color 0.2s linear, // Stagger border appearances
+    border-right-color 0.2s linear,
+    border-bottom-color 0.2s linear,
+    border-left-color 0.2s linear;
+    &:hover, &.button-active {
+      background: $neon-color;
+      color: $black;
+    }
+    &::before,
+    &::after {
+      left: 0;
+      top: 0;
+    }
+    &::before {
+      border: 0.55vmin solid transparent; // We're animating border-color again
+      border-radius: 2em;
+    }
+    @include keyframes(#{$name}-border) {
+      0% {
+        border-top-color: $neon-color;
+        box-shadow: 0 0 0.5em $neon-on,
+        inset 0 0 0.5em $neon-on,
+        0 0 1.5em $neon-color,
+        inset 0 0 1.5em $neon-color;
+      }
+      25% {
+        border-right-color: $neon-color;
+        box-shadow: 0 0 0.5em $neon-on,
+        inset 0 0 0.5em $neon-on,
+        0 0 1.5em $neon-color,
+        inset 0 0 1.5em $neon-color;
+      }
+      50% {
+        border-bottom-color: $neon-color;
+        box-shadow: 0 0 0.5em $neon-on,
+        inset 0 0 0.5em $neon-on,
+        0 0 1.5em $neon-color,
+        inset 0 0 1.5em $neon-color;
+      }
+      75% {
+        border-left-color: $neon-color;
+        box-shadow: 0 0 0.5em $neon-on,
+        inset 0 0 0.5em $neon-on,
+        0 0 1.5em $neon-color,
+        inset 0 0 1.5em $neon-color;
+      }
+    }
+    &::after {
+      border: 0 solid transparent; // Makes border thinner at the edges? I forgot what I was doing
+      border-radius: 2em;
+    }
+}
+
+@mixin spin($name, $before-rotation,$after-rotation) {
+  animation: spin-#{$name} 2.5s infinite linear;
+  @include keyframes(spin-#{$name}) {
+    0% {
+      -webkit-transform: rotate($before-rotation);
+      transform: rotate($before-rotation);
+    }
+    100% {
+      -webkit-transform: rotate($after-rotation);
+      transform: rotate($after-rotation);
+    }
+  }
+}
+
+@mixin line-glow($name, $duration,$delay, $color,$color-default) {
+  animation: line-glow-#{$name} $duration $delay;
+  @include keyframes(line-glow-#{$name}) {
+    21%, 80% {
+      @include neon-border($color, $color-default);
+      background: $color;
+      border: 1px solid $color;
+    }
+    0%, 20%,81%, 100% {}
+  }
+}
+
+@keyframes bouncy-top {
+ 0%{top:0}
+ 40%{top:0}
+ 43%{top:-0.9em}
+ 46%{top:0}
+ 48%{top:-0.4em}
+ 50%{top:0}
+ 100%{top:0}
+}
+@mixin bouncy-left($name,$default-pos) {
+  @include keyframes(bouncy-left-#{$name}) {
+    0%{left:$default-pos}
+    40%{left:$default-pos}
+    43%{left:$default-pos - 10px}
+    46%{left:$default-pos}
+    48%{left: $default-pos - 5px}
+    50%{left:$default-pos}
+    100%{left:$default-pos}
+  }
+}
+
+@keyframes button-line-glow {
+  0%, 25% {
+    background: $menu-button-1;
+    border-bottom: 1px solid $menu-button-1;
+    @include neon-border($menu-button-1, $menu-button-default);
+  }
+  26%, 50% {
+    background: $menu-button-2;
+    border-bottom: 1px solid $menu-button-2;
+    @include neon-border($menu-button-2, $menu-button-default);
+  }
+  51%, 75% {
+    background: $menu-button-3;
+    border-bottom: 1px solid $menu-button-3;
+    @include neon-border($menu-button-3, $menu-button-default);
+  }
+  76%, 100% {
+    background: $menu-button-4;
+    border-bottom: 1px solid $menu-button-4;
+    @include neon-border($menu-button-4, $menu-button-default);
+  }
+}
+
+@keyframes loading-roll {
+  100% { transform: rotateZ(-2turn); }
+}
+
+@keyframes loading-flip {
+  25% { transform: rotateX(0.5turn) translate(0,-8em); }
+  75% { transform: rotateX(0turn); }
+}
+$color-1: random_main-color();
+$color-2: random_main-color(($color-1));
+$color-3: random_main-color(($color-1,$color-2));
+$color-4: random_main-color(($color-1,$color-2,$color-3));
+@keyframes left-menu-neon {
+  0%,10% {
+  }
+  11%,14%,19%,21%,26%,30% {
+    @include neon-panel-border($color-1,$menu-panel,$menu-panel,$menu-panel);
+  }
+  15%,18%,22%,25% {
+    @include neon-panel-border($menu-panel,$menu-panel,$menu-panel,$menu-panel);
+  }
+  31%,34%,39%,41%,46%,50%{
+    @include neon-panel-border($color-1,$color-2,$menu-panel,$menu-panel);
+  }
+  35%,38%,42%,45%{
+    @include neon-panel-border($color-1,$menu-panel,$menu-panel,$menu-panel);
+  }
+  51%,54%,59%,61%,66%,70%{
+    @include neon-panel-border($color-1,$color-2,$color-3,$menu-panel);
+  }
+  55%,58%,62%,65%{
+    @include neon-panel-border($color-1,$color-2,$menu-panel,$menu-panel);
+  }
+  71%,74%,79%,81%,86%,90%,100%{
+    @include neon-panel-border($color-1,$color-2,$color-3,$color-4);
+  }
+  75%,78%,82%,85%{
+    @include neon-panel-border($color-1,$color-2,$color-3,$menu-panel);
+  }
+}
+@keyframes left-menu-neon-flicker {
+  0%,25%,31%,35%,41%,45%,71%,75%,81%,100%{
+    @include neon-panel-border($color-1,$color-2,$color-3,$color-4);
+  }
+  26%,30%,36%,40%,46%,70%,76%,80% {
+    @include neon-panel-border($color-1,$color-2,$menu-panel,$color-4);
+  }
+}

@@ -1,0 +1,54 @@
+// Imports =============================
+
+@import 'base';
+@import "~uikit/src/scss/uikit.scss";
+@import "~vue-select/src/scss/vue-select.scss";
+@import 'variables';
+@import "functions";
+@import 'overrides/uikit';
+@import 'overrides/vue-overlay';
+@import 'overrides/vue-select';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/project';
+@import 'components/menu-button';
+@import 'components/loading-component';
+@import 'components/footer';
+
+@import 'pages/home';
+@import 'pages/about-me';
+@import 'pages/landing';
+@import 'pages/apps';
+@import 'pages/contributions';
+@import 'pages/contact-me';
+@import 'pages/cv';
+
+// Styles =============================+
+html {
+  background-color: $black;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+
+  #app{
+    height:100vh;
+    &.is-loading {
+      overflow-x: hidden;
+      overflow-y: hidden;
+      padding-top: 45px;
+    }
+  }
+
+  .page {
+    padding-bottom: 50px;
+    .content {
+      margin-top: 10%;
+    }
+    .sign{
+      margin-top: 25px;
+      width: 50%;
+    }
+  }
+}

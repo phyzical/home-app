@@ -1,0 +1,23 @@
+module.exports = {
+    extends: ['standard', 'plugin:vue/recommended', 'prettier'], // extending recommended config and config derived from eslint-config-prettier
+    plugins: ['prettier'], // activating esling-plugin-prettier (--fix stuff)
+    parserOptions: {
+        parser: "babel-eslint",
+    },
+    env: {
+        browser: true,
+        node: true,
+        jquery: true,
+        amd: true
+    },
+    rules: {
+        // allow async-await
+        'generator-star-spacing': 'off',
+        // allow debugger during development
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        "indent": ["warn", 4],
+        "vue/html-indent": ["warn", 4],
+        "vue/script-indent": ["warn", 4],
+        "vue/no-v-html": 'off'
+    }
+};

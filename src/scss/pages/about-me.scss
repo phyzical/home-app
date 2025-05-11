@@ -1,0 +1,208 @@
+.about-me {
+  .sign {
+    $color-1: random_main-color();
+    $color-2: random_main-color(($color-1));
+    $color-3: random_main-color(($color-1,$color-2));
+    @include neon-sign(about-me,$neon-off,$color-1,$color-2,$color-3);
+  }
+  .arrow {
+    height: 300px;
+   margin-top: 100px;
+    position: relative;
+    transform: rotate(-90deg);
+    $color-1: random_main-color();
+    $color-2: random_main-color(($color-1));
+    $color-3: random_main-color(($color-1,$color-2));
+    svg {
+      height: 100%;
+      width: 100%;
+      g {
+        fill: $grey;
+        fill-opacity: 60%;
+        filter: none;
+        stroke: $white;
+        stroke-opacity: 60%;
+        stroke-width: 0.25px;
+        transition: fill,filter;
+      }
+      &:nth-child(2) {
+        animation: bouncy-left-one 6s 0s infinite linear, one-svg infinite 3s 8s !important;
+        left: 0;
+        position: absolute;
+        top: 0;
+        g {
+          @include g-flicker(one-g,$color-1,$neon-off, 3s, 8s)
+        }
+        @include bouncy-left(one,0);
+        @include svg-flicker(one-svg,$color-1,$neon-off, 3s, 8s)
+      }
+      &:nth-child(4) {
+        animation: bouncy-left-two 6s 2s infinite linear, two-svg infinite 3s 4s !important;
+        left: 45px;
+        position: absolute;
+        top: 0;
+        g {
+          @include g-flicker(two-g,$color-2,$neon-off,  3s, 4s)
+        }
+        @include bouncy-left(two,45px);
+        @include svg-flicker(two-svg,$color-2,$neon-off, 3s, 4s)
+      }
+      &:nth-child(6) {
+        animation: bouncy-left-three 6s 4s infinite linear, three-svg infinite 3s 0s !important;
+        left: 90px;
+        position: absolute;
+        top: 0;
+        g {
+          @include g-flicker(three-g,$color-3,$neon-off, 3s, 0s)
+        }
+        @include bouncy-left(three,90px);
+        @include svg-flicker(three-svg,$color-3,$neon-off, 3s, 0s)
+      }
+    }
+  }
+  .experiences {
+    $color-1: random_main-color();
+    $color-2: random_main-color(($color-1));
+    $color-3: random_main-color(($color-1,$color-2));
+    $color-4: random_main-color(($color-1,$color-2,$color-3));
+    $color-5: random_main-color(($color-1,$color-2,$color-3,$color-4));
+    $color-6: random_main-color(($color-1,$color-2,$color-3,$color-4,$color-5));
+    $color-7: random_main-color(($color-1,$color-2,$color-3,$color-4,$color-5,$color-6));
+    .category{
+      color: $neon-off;
+      text-align: center;
+      text-shadow: 0 0 0.05em $neon-on;
+    }
+    .category-content {
+      .experience-ul {
+      }
+      a {
+        svg {
+          polyline {
+            fill: $red;
+            fill-opacity: 60%;
+            filter: none;
+            stroke: $red;
+            stroke-opacity: 60%;
+            stroke-width: 0.25px;
+          }
+
+          filter: drop-shadow(0 0 8px $red);
+        }
+      }
+      .uk-slider-nav {
+        padding-bottom:10px;
+        padding-top:10px;
+      }
+      .language{
+        img, svg {
+          max-width: 60%;
+          min-width: 30%;
+          max-height: 60%;
+          min-height: 30%;
+        }
+
+        &:hover {
+          $color-1: random_main-color();
+          $color-2: random_main-color(($color-1));
+          $color-3: random_main-color(($color-1, $color-2));
+          $color-4: random_main-color(($color-1, $color-2, $color-3));
+          $color-5: random_main-color(($color-1, $color-2, $color-3,$color-4));
+
+          &:nth-child(1n) {
+            .image {
+              border: 5px solid $color-1;
+              @include neon-border($color-1, $neon-off);
+            }
+          }
+
+          &:nth-child(2n) {
+            .image {
+              border: 5px solid $color-2;
+              @include neon-border($color-2, $neon-off);
+            }
+          }
+
+          &:nth-child(3n) {
+            .image {
+              border: 5px solid $color-3;
+              @include neon-border($color-3, $neon-off);
+            }
+          }
+
+          &:nth-child(4n) {
+            .image {
+              border: 5px solid $color-4;
+              @include neon-border($color-4, $neon-off);
+            }
+          }
+
+          &:nth-child(5n) {
+            .image {
+              border: 5px solid $color-5;
+              @include neon-border($color-5, $neon-off);
+            }
+          }
+          &:nth-child(6n) {
+            .image {
+              border: 5px solid $color-6;
+              @include neon-border($color-6, $neon-off);
+            }
+          }
+          &:nth-child(7n) {
+            .image {
+              border: 5px solid $color-7;
+              @include neon-border($color-7, $neon-off);
+            }
+          }
+        }
+      }
+    }
+    .experience {
+      width:100%;
+      &:nth-child(1n) {
+        .category{
+          animation: category-one-text-start 2s 2s infinite alternate;
+        }
+        @include text-start(category-one,$color-1)
+      }
+      &:nth-child(2n) {
+        .category{
+          animation: category-two-text-start 2s 2.2s infinite alternate;
+        }
+        @include text-start(category-two,$color-2)
+      }
+      &:nth-child(3n) {
+        .category{
+          animation: category-three-text-start 2s 2.4s infinite alternate;
+        }
+        @include text-start(category-three,$color-3)
+      }
+      &:nth-child(4n) {
+        .category{
+          animation: category-four-text-start 2s 2.6s infinite alternate;
+        }
+        @include text-start(category-four,$color-4)
+      }
+      &:nth-child(5n) {
+        .category{
+          animation: category-five-text-start 2s 2.8s infinite alternate;
+        }
+        @include text-start(category-five,$color-5)
+      }
+      &:nth-child(6n) {
+        .category{
+          animation: category-six-text-start 2s 3s infinite alternate;
+        }
+        @include text-start(category-six,$color-6)
+      }
+      &:nth-child(7n) {
+        .category{
+          animation: category-seven-text-start 2s 3.2s infinite alternate;
+        }
+        @include text-start(category-seven,$color-7)
+      }
+    }
+  }
+}
+

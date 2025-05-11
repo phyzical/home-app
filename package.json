@@ -1,0 +1,80 @@
+{
+  "name": "jacks-home-app",
+  "version": "0.8.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/fetchJobLink.js",
+    "build": "yarn prebuild && vue-cli-service build --mode=production",
+    "lint": "vue-cli-service lint",
+    "serve": "yarn prebuild && vue-cli-service serve"
+  },
+  "dependencies": {
+    "node-notifier": "^5.4.1",
+    "pdfmake": "^0.1.66",
+    "typedarray-slice": "1.0.4",
+    "uikit": "3.1.5",
+    "vue": "^2",
+    "es6-object-assign": "1.1.0",
+    "vue-loading-overlay": "3.2.0",
+    "vue-router": "^3.3.4",
+    "vue-select": "^3.4.0",
+    "vuelidate": "0.7.4",
+    "vuelidate-error-extractor": "2.4.0",
+    "vuex": "^3.5.1",
+    "vuex-persistedstate": "^3.0.1",
+    "register-service-worker": "1.7.1"
+  },
+  "devDependencies": {
+    "node-fetch": "^2",
+    "@vue/cli-plugin-babel": "3.4.0",
+    "eslint-global-patch": "^1.0.4",
+    "@vue/cli-plugin-eslint": "3.4.1",
+    "@vue/cli-plugin-pwa": "4.0.5",
+    "@vue/cli-service": "3.4.0",
+    "@vue/eslint-config-prettier": "5.0.0",
+    "babel-eslint": "^10",
+    "babel-polyfill": "6.26.0",
+    "es6-promise": "4.2.8",
+    "eslint": "^6",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-node": "9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.0",
+    "eslint-plugin-vue": "^7",
+    "sass": "^1",
+    "sass-loader": "^10",
+    "stylelint": "10.1.0",
+    "stylelint-order": "3.0.1",
+    "vue-template-compiler": "^2",
+    "webpack-build-notifier": "1.1.0",
+    "webpack": "^4"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

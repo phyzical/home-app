@@ -1,0 +1,45 @@
+.uk-sticky-placeholder {
+  height: 0 !important;
+}
+
+.uk-offcanvas-overlay::before{
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.form {
+  .uk-alert-success {
+    animation: success-box-start 3s infinite;
+    @include box-start(success,$green,$neon-off);
+    li {
+      animation: success-text-start 3s forwards;
+      @include text-start(success,$green,$neon-off);
+    }
+  }
+  .form-group {
+    transition: border,box-shadow;
+    :focus {
+      animation: input-box-start 3s infinite;
+      @include box-start(input,$blue,$neon-off)
+    }
+    .invalid {
+      animation: invalid-box-start 3s 0.2s infinite;
+      @include box-start(invalid,$red,$neon-off)
+    }
+    .uk-input, .uk-select, .uk-textarea {
+      background-color: $grey;
+      color: $white;
+    }
+    .uk-form-icon {
+      color: $black;
+    }
+  }
+  .uk-button {
+    &:enabled {
+      $color-1: random_main-color();
+      animation: button-box-start 2s forwards;
+      background: transparent;
+      color: $white;
+      @include box-start(button,$color-1,$white)
+    }
+  }
+}

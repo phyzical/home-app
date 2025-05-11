@@ -1,0 +1,140 @@
+.employed {
+  .project {
+    .uk-card-body{
+      height:500px;
+    }
+  }
+}
+.project {
+  background: #{$grey}75;
+  text-align: center;
+  a{
+    color: $light-grey;
+  }
+  .uk-card-title {
+    color: $light-grey;
+  }
+  .uk-card-header{
+    height:100px;
+  }
+  .uk-card-body{
+    height:75px;
+  }
+  .uk-card-footer {
+    height:50px;
+  }
+  &:hover {
+    $color-1: random_main-color();
+    $color-2: random_main-color(($color-1));
+    $color-3: random_main-color(($color-1, $color-2));
+    $color-4: random_main-color(($color-1, $color-2, $color-3));
+    $color-5: random_main-color(($color-1, $color-2, $color-3,$color-4));
+    a{
+      color: $light-grey;
+    }
+    &:nth-child(1n) {
+      border: 5px solid $color-1;
+      @include neon-border($color-1, $neon-off);
+      .uk-card-title {
+        animation: project-title-one-text-start 2s infinite alternate;
+        @include text-start(project-title-one,$color-1)
+      }
+      .uk-card-body {
+        color: $color-1;
+      }
+      .uk-card-header {
+        @include neon-border($color-1, $neon-off);
+      }
+      .uk-card-footer {
+        @include neon-border($color-1, $neon-off);
+      }
+      a:hover{
+        animation: project-title-one-text-start 2s infinite alternate;
+      }
+    }
+    &:nth-child(2n) {
+      border: 5px solid $color-2;
+      @include neon-border($color-2, $neon-off);
+      .uk-card-title {
+        animation: project-title-two-text-start 2s infinite alternate;
+        @include text-start(project-title-two,$color-2)
+      }
+      .uk-card-body {
+        color: $color-2;
+      }
+      .uk-card-header {
+        @include neon-border($color-2, $neon-off);
+      }
+      .uk-card-footer {
+        @include neon-border($color-2, $neon-off);
+      }
+      a:hover{
+        animation: project-title-two-text-start 2s infinite alternate;
+      }
+    }
+
+    &:nth-child(3n) {
+      border: 5px solid $color-3;
+      @include neon-border($color-3, $neon-off);
+      .uk-card-title {
+        animation: project-title-three-text-start 2s infinite alternate;
+        @include text-start(project-title-three,$color-3)
+      }
+      .uk-card-body {
+        color: $color-3;
+      }
+      .uk-card-header {
+        @include neon-border($color-3, $neon-off);
+      }
+      .uk-card-footer {
+        @include neon-border($color-3, $neon-off);
+      }
+      a:hover{
+        animation: project-title-three-text-start 2s infinite alternate;
+      }
+    }
+
+    &:nth-child(4n) {
+      border: 5px solid $color-4;
+      @include neon-border($color-4, $neon-off);
+      .uk-card-title {
+        animation: project-title-four-text-start 2s infinite alternate;
+        @include text-start(project-title-four,$color-4)
+      }
+      .uk-card-body {
+        color: $color-4;
+      }
+      .uk-card-header {
+        @include neon-border($color-4, $neon-off);
+      }
+      .uk-card-footer {
+        @include neon-border($color-4, $neon-off);
+      }
+      a:hover{
+        animation: project-title-four-text-start 2s infinite alternate;
+      }
+    }
+
+    &:nth-child(5n) {
+      border: 5px solid $color-5;
+      @include neon-border($color-5, $neon-off);
+      .uk-card-title {
+        animation: project-title-five-text-start 2s infinite alternate;
+        @include text-start(project-title-five,$color-5)
+      }
+      .uk-card-body {
+        color: $color-5;
+
+      }
+      .uk-card-header {
+        @include neon-border($color-5, $neon-off);
+      }
+      .uk-card-footer {
+        @include neon-border($color-5, $neon-off);
+      }
+      a:hover{
+        animation: project-title-five-text-start 2s infinite alternate;
+      }
+    }
+  }
+}
