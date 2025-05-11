@@ -15,7 +15,7 @@
     "uikit": "3.1.5",
     "vue": "^2",
     "es6-object-assign": "1.1.0",
-    "vue-loading-overlay": "3.2.0",
+    "vue-loading-overlay": "3.4.3",
     "vue-router": "^3.3.4",
     "vue-select": "^3.4.0",
     "vuelidate": "0.7.4",
