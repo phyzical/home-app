@@ -1,6 +1,5 @@
 const config = require('./src/helpers/config')
 const path = require('path')
-let plugins = []
 
 module.exports = {
     css: {
@@ -12,7 +11,7 @@ module.exports = {
             port: config.port
         },
         devtool: 'source-map',
-        plugins,
+        plugins: [],
         output: {
             filename: '[name].[hash].js'
         }

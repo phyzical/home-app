@@ -23,15 +23,15 @@
     "register-service-worker": "1.7.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "3.12.1",
+    "core-js": "3.42.0",
+    "@vue/cli-plugin-babel": "^4",
     "eslint-global-patch": "^1.0.4",
-    "@vue/cli-plugin-eslint": "3.12.1",
-    "@vue/cli-plugin-pwa": "4.5.19",
-    "@vue/cli-service": "3.12.1",
+    "@vue/cli-plugin-eslint": "^4",
+    "@vue/cli-plugin-pwa": "^4",
+    "@vue/cli-service": "^4",
     "babel-eslint": "^10",
     "babel-polyfill": "6.26.0",
-    "es6-promise": "4.2.8",
-    "eslint": "^6",
+    "eslint": "^7",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-node": "9.1.0",
@@ -43,7 +43,7 @@
     "stylelint": "10.1.0",
     "stylelint-order": "3.1.1",
     "vue-template-compiler": "^2",
-    "webpack": "^4"
+    "webpack": "^5"
   },
   "eslintConfig": {
     "root": true,
