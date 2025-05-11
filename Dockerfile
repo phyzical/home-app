@@ -19,6 +19,9 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build dist /usr/share/nginx/html
 
+ARG VUE_APP_RELEASE_VERSION="VERSION_PROVIDED_ON_BUILD"
+ENV VUE_APP_RELEASE_VERSION=$VUE_APP_RELEASE_VERSION
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
