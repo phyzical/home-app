@@ -25,7 +25,7 @@
   "devDependencies": {
     "core-js": "3.42.0",
     "@vue/cli-plugin-babel": "^4",
-    "eslint-global-patch": "^1.0.4",
+    "eslint-global-patch": "^8.0.0",
     "@vue/cli-plugin-eslint": "^4",
     "@vue/cli-plugin-pwa": "^4",
     "@vue/cli-service": "^4",
