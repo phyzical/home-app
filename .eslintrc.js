@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['standard', 'plugin:vue/recommended'], // extending recommended config and config derived from eslint-config-prettier
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser'
   },
   env: {
     browser: true,
