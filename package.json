@@ -24,7 +24,7 @@
     "register-service-worker": "1.7.2"
   },
   "devDependencies": {
-    "node-fetch": "^2",
+    "node-fetch": "^3.0.0",
     "@vue/cli-plugin-babel": "3.4.0",
     "eslint-global-patch": "^1.0.4",
     "@vue/cli-plugin-eslint": "3.4.1",
