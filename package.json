@@ -48,7 +48,7 @@
     "stylelint": "10.1.0",
     "stylelint-order": "3.0.1",
     "vue-template-compiler": "^2",
-    "webpack-build-notifier": "1.1.0",
+    "webpack-build-notifier": "3.1.0",
     "webpack": "^4"
   },
   "eslintConfig": {
