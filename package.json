@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vue-cli-service build --mode=production",
     "lint": "vue-cli-service lint && eslint --fix --ext .js,.vue src && stylelint --fix src/**/*.scss",
-    "serve": "yarn prebuild && vue-cli-service serve"
+    "serve": "vue-cli-service serve"
   },
   "dependencies": {
     "node-notifier": "^5.4.1",
@@ -21,7 +21,7 @@
     "vuelidate-error-extractor": "2.4.0",
     "vuex": "^3.5.1",
     "vuex-persistedstate": "^3.0.1",
-    "register-service-worker": "1.7.1"
+    "register-service-worker": "1.7.2"
   },
   "devDependencies": {
     "node-fetch": "^2",
@@ -43,7 +43,7 @@
     "sass": "^1",
     "sass-loader": "^10",
     "stylelint": "10.1.0",
-    "stylelint-order": "3.0.1",
+    "stylelint-order": "3.1.1",
     "vue-template-compiler": "^2",
     "webpack": "^4"
   },
