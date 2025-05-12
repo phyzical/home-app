@@ -22,24 +22,38 @@
   @-webkit-keyframes #{$animation-name} {
     @content;
   }
+
   @-moz-keyframes #{$animation-name} {
     @content;
   }
+
   @keyframes #{$animation-name} {
     @content;
   }
 }
+
 @function random_main-color($previous: null) {
-  $elements: ($red, $purple, $teal, $blue, $green, $pink, $orange);
-  $element: nth($elements, random(length($elements)));
-  @if $previous and index($previous, $element) {
-    @return random_main-color($previous);
-  }
-  @return $element;
+  $elements: (
+    $red,
+    $purple,
+    $teal,
+    $blue,
+    $green,
+    $pink,
+    $orange
+  );
+$element: nth($elements, random(length($elements)));
+
+@if $previous and index($previous, $element) {
+  @return random_main-color($previous);
+}
+
+@return $element;
 }
 
 @mixin svg-flicker($name, $color, $color-off, $timing, $delay) {
   @include keyframes($name) {
+
     11%,
     19%,
     25%,
@@ -51,6 +65,7 @@
     100% {
       filter: drop-shadow(0 0 8px $color);
     }
+
     0%,
     10%,
     20%,
@@ -59,10 +74,13 @@
       filter: none;
     }
   }
+
   animation: $name $timing $delay infinite;
 }
+
 @mixin g-flicker($name, $color, $color-off, $timing, $delay) {
   @include keyframes($name) {
+
     11%,
     19%,
     25%,
@@ -75,6 +93,7 @@
       fill: $color;
       stroke: $color;
     }
+
     0%,
     10%,
     20%,
@@ -84,13 +103,13 @@
       stroke: $white;
     }
   }
+
   animation: $name $timing $delay infinite;
 }
 
 @mixin neon-sign($name, $color-off, $box-color, $sign-color-1, $sign-color-2) {
-  animation:
-    #{$name}-box-start 1.5s 2s forwards,
-    #{$name}-box-flicker 6.5s 2s infinite alternate;
+  animation: #{$name}-box-start 1.5s 2s forwards,
+  #{$name}-box-flicker 6.5s 2s infinite alternate;
   border: 0.8vmin solid $color-off;
   border-radius: 4vmin;
   box-shadow:
@@ -100,10 +119,12 @@
     inset 0 0 0.2em $neon-on;
   padding: 0.5em;
   transition: box-shadow;
+
   span {
     &:focus {
       outline: none;
     }
+
     color: $color-off;
 
     font-size: 7vmin;
@@ -122,14 +143,21 @@
         background-color: $box-color;
         color: $sign-color-1;
       }
+
       &:nth-child(1) {
         animation: #{$name}-one-text-start 1.5s 3.5s forwards;
       }
+
       &:nth-child(2) {
         animation: #{$name}-two-text-start 1.5s 5s forwards;
       }
+
       &:nth-child(3) {
         animation: #{$name}-three-text-start 1.5s 6.5s forwards;
+      }
+
+      &:nth-child(4) {
+        animation: #{$name}-three-text-start 1.5s 8.0s forwards;
       }
     }
 
@@ -151,9 +179,11 @@
       &:nth-child(2) {
         animation: #{$name}-text-flicker 3s 5s infinite alternate;
       }
+
       &:nth-child(3) {
         animation: #{$name}-text-flicker 3s 6.5s infinite alternate;
       }
+
       &:nth-child(4) {
         animation: #{$name}-text-flicker 3s 8s infinite alternate;
       }
@@ -161,6 +191,7 @@
   }
 
   @include keyframes(#{$name}-box-flicker) {
+
     0%,
     19%,
     21%,
@@ -176,6 +207,7 @@
         0 0 1.5em $box-color,
         inset 0 0 1.5em $box-color;
     }
+
     20%,
     24%,
     55% {
@@ -187,11 +219,14 @@
         inset 0 0 0.2em $neon-on;
     }
   }
+
   @include box-start($name, $box-color, $color-off);
   @include text-start(#{$name}-one, $sign-color-1, $color-off);
   @include text-start(#{$name}-two, $sign-color-1, $color-off);
   @include text-start(#{$name}-three, $sign-color-1, $color-off);
+
   @include keyframes(#{$name}-text-flicker) {
+
     0%,
     30%,
     38%,
@@ -205,6 +240,7 @@
         0 0 0.5em $sign-color-2,
         0 0 0.1em $sign-color-2;
     }
+
     31%,
     37%,
     47%,
@@ -228,6 +264,7 @@
     inset 0 0 4vmin $box-color,
     0 0 8vmin $box-color,
     inset 0 0 8vmin $box-color;
+
   a {
     text-shadow:
       0 -40px 100px,
@@ -241,6 +278,7 @@
 
 @mixin text-start($name, $color: $red, $color-off: $neon-off) {
   @include keyframes(#{$name}-text-start) {
+
     0%,
     10%,
     15%,
@@ -257,6 +295,7 @@
         0 0 0.5em $color,
         0 0 0.1em $color;
     }
+
     11%,
     14%,
     26%,
@@ -272,6 +311,7 @@
 
 @mixin box-start($name, $box-color, $color-off) {
   @include keyframes(#{$name}-box-start) {
+
     0%,
     10%,
     15%,
@@ -289,6 +329,7 @@
         0 0 1.5em $box-color,
         inset 0 0 1.5em $box-color;
     }
+
     11%,
     14%,
     26%,
@@ -325,20 +366,24 @@
     border-right-color 0.2s linear,
     border-bottom-color 0.2s linear,
     border-left-color 0.2s linear;
+
   &:hover,
   &.button-active {
     background: $neon-color;
     color: $black;
   }
+
   &::before,
   &::after {
     left: 0;
     top: 0;
   }
+
   &::before {
     border: 0.55vmin solid transparent; // We're animating border-color again
     border-radius: 2em;
   }
+
   @include keyframes(#{$name}-border) {
     0% {
       border-top-color: $neon-color;
@@ -348,6 +393,7 @@
         0 0 1.5em $neon-color,
         inset 0 0 1.5em $neon-color;
     }
+
     25% {
       border-right-color: $neon-color;
       box-shadow:
@@ -356,6 +402,7 @@
         0 0 1.5em $neon-color,
         inset 0 0 1.5em $neon-color;
     }
+
     50% {
       border-bottom-color: $neon-color;
       box-shadow:
@@ -364,6 +411,7 @@
         0 0 1.5em $neon-color,
         inset 0 0 1.5em $neon-color;
     }
+
     75% {
       border-left-color: $neon-color;
       box-shadow:
@@ -373,6 +421,7 @@
         inset 0 0 1.5em $neon-color;
     }
   }
+
   &::after {
     border: 0 solid transparent; // Makes border thinner at the edges? I forgot what I was doing
     border-radius: 2em;
@@ -381,11 +430,13 @@
 
 @mixin spin($name, $before-rotation, $after-rotation) {
   animation: spin-#{$name} 2.5s infinite linear;
+
   @include keyframes(spin-#{$name}) {
     0% {
       -webkit-transform: rotate($before-rotation);
       transform: rotate($before-rotation);
     }
+
     100% {
       -webkit-transform: rotate($after-rotation);
       transform: rotate($after-rotation);
@@ -395,18 +446,20 @@
 
 @mixin line-glow($name, $duration, $delay, $color, $color-default) {
   animation: line-glow-#{$name} $duration $delay;
+
   @include keyframes(line-glow-#{$name}) {
+
     21%,
     80% {
       @include neon-border($color, $color-default);
       background: $color;
       border: 1px solid $color;
     }
+
     0%,
     20%,
     81%,
-    100% {
-    }
+    100% {}
   }
 }
 
@@ -414,45 +467,58 @@
   0% {
     top: 0;
   }
+
   40% {
     top: 0;
   }
+
   43% {
     top: -0.9em;
   }
+
   46% {
     top: 0;
   }
+
   48% {
     top: -0.4em;
   }
+
   50% {
     top: 0;
   }
+
   100% {
     top: 0;
   }
 }
+
 @mixin bouncy-left($name, $default-pos) {
   @include keyframes(bouncy-left-#{$name}) {
     0% {
       left: $default-pos;
     }
+
     40% {
       left: $default-pos;
     }
+
     43% {
       left: $default-pos - 10px;
     }
+
     46% {
       left: $default-pos;
     }
+
     48% {
       left: $default-pos - 5px;
     }
+
     50% {
       left: $default-pos;
     }
+
     100% {
       left: $default-pos;
     }
@@ -460,24 +526,28 @@
 }
 
 @keyframes button-line-glow {
+
   0%,
   25% {
     background: $menu-button-1;
     border-bottom: 1px solid $menu-button-1;
     @include neon-border($menu-button-1, $menu-button-default);
   }
+
   26%,
   50% {
     background: $menu-button-2;
     border-bottom: 1px solid $menu-button-2;
     @include neon-border($menu-button-2, $menu-button-default);
   }
+
   51%,
   75% {
     background: $menu-button-3;
     border-bottom: 1px solid $menu-button-3;
     @include neon-border($menu-button-3, $menu-button-default);
   }
+
   76%,
   100% {
     background: $menu-button-4;
@@ -496,18 +566,22 @@
   25% {
     transform: rotateX(0.5turn) translate(0, -8em);
   }
+
   75% {
     transform: rotateX(0turn);
   }
 }
+
 $color-1: random_main-color();
 $color-2: random_main-color(($color-1));
 $color-3: random_main-color(($color-1, $color-2));
 $color-4: random_main-color(($color-1, $color-2, $color-3));
+
 @keyframes left-menu-neon {
+
   0%,
-  10% {
-  }
+  10% {}
+
   11%,
   14%,
   19%,
@@ -516,17 +590,17 @@ $color-4: random_main-color(($color-1, $color-2, $color-3));
   30% {
     @include neon-panel-border($color-1, $menu-panel, $menu-panel, $menu-panel);
   }
+
   15%,
   18%,
   22%,
   25% {
-    @include neon-panel-border(
+    @include neon-panel-border($menu-panel,
       $menu-panel,
       $menu-panel,
-      $menu-panel,
-      $menu-panel
-    );
+      $menu-panel );
   }
+
   31%,
   34%,
   39%,
@@ -535,12 +609,14 @@ $color-4: random_main-color(($color-1, $color-2, $color-3));
   50% {
     @include neon-panel-border($color-1, $color-2, $menu-panel, $menu-panel);
   }
+
   35%,
   38%,
   42%,
   45% {
     @include neon-panel-border($color-1, $menu-panel, $menu-panel, $menu-panel);
   }
+
   51%,
   54%,
   59%,
@@ -549,12 +625,14 @@ $color-4: random_main-color(($color-1, $color-2, $color-3));
   70% {
     @include neon-panel-border($color-1, $color-2, $color-3, $menu-panel);
   }
+
   55%,
   58%,
   62%,
   65% {
     @include neon-panel-border($color-1, $color-2, $menu-panel, $menu-panel);
   }
+
   71%,
   74%,
   79%,
@@ -564,6 +642,7 @@ $color-4: random_main-color(($color-1, $color-2, $color-3));
   100% {
     @include neon-panel-border($color-1, $color-2, $color-3, $color-4);
   }
+
   75%,
   78%,
   82%,
@@ -571,7 +650,9 @@ $color-4: random_main-color(($color-1, $color-2, $color-3));
     @include neon-panel-border($color-1, $color-2, $color-3, $menu-panel);
   }
 }
+
 @keyframes left-menu-neon-flicker {
+
   0%,
   25%,
   31%,
@@ -584,6 +665,7 @@ $color-4: random_main-color(($color-1, $color-2, $color-3));
   100% {
     @include neon-panel-border($color-1, $color-2, $color-3, $color-4);
   }
+
   26%,
   30%,
   36%,

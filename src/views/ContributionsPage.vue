@@ -57,6 +57,13 @@
         >
           <button
             class="bouncy uk-button uk-width-1-2"
+            :class="displays.aaf ? 'button-active' : null"
+            @click="aafClick"
+          >
+            Australian Access Federation
+          </button>
+          <button
+            class="bouncy uk-button uk-width-1-2"
             :class="displays.agworld ? 'button-active' : null"
             @click="agworldClick"
           >
@@ -108,6 +115,14 @@
         class="uk-grid"
         uk-grid
       >
+        <projects-component
+          class="aaf"
+          :projects="projects.aaf"
+          :class="[
+            displays.aaf ? 'uk-animation-slide-top' : 'uk-hidden',
+            'employed',
+          ]"
+        />
         <projects-component
           class="agworld"
           :projects="projects.agworld"
@@ -173,6 +188,10 @@ import xpress from '../images/projects/xpress.svg'
 import yourcall from '../images/projects/yourcall.png'
 import hgwa from '../images/projects/hgwa.svg'
 import waso from '../images/projects/waso.svg'
+import aaf from '../images/projects/aaf.png'
+import federationManager from '../images/projects/federation-manager.svg'
+import rapidIdpManager from '../images/projects/rapid-idp.png'
+import verifid from '../images/projects/verifid.svg'
 
 export default {
   components: {
@@ -186,9 +205,62 @@ export default {
         personal: false,
         simplisite: false,
         strangeAnimals: false,
-        agworld: false
+        agworld: false,
+        aaf: false
       },
       projects: {
+        aaf: [
+          {
+            title: 'Australian Access Federation',
+            image: aaf,
+            body:
+              '<p>Australian Access Federation provides an affordable way to connect universities with scientists</p>' +
+              '<p>They leverage opensource software in combination with inhouse products to make managing these connections as easy as possible</p>' +
+              '<p>My duties involved mentoring, implementing features, fixing bugs and refactoring legacy code</p>' +
+              '<p>There is also an element of devops involved in order to manage the cloud services for these products</p>',
+            link: 'https://aaf.edu.au'
+          },
+          {
+            title: 'Discovery Service',
+            image: aaf,
+            body:
+              '<p>This product is used as a gateway for services</p>' +
+              '<p>For example an institution would send users to discovery service to choose which identity provider to use to login i.e a university</p>' +
+              '<p>My duties involved mentoring, implementing features, fixing bugs and refactoring legacy code</p>',
+            link: 'https://ds.aaf.edu.au'
+          },
+          {
+            title: 'Federation Manager',
+            image: federationManager,
+            body:
+              '<p>This product is used as a place to manage a service or identity providers metadata</p>' +
+              '<p>For example an institution want only certain identity providers to be allowed access</p>' +
+              '<p>Also allows admins of services to get an overview of who and what is accessing their services</p>' +
+              '<p>My duties involved mentoring, implementing features, fixing bugs and refactoring legacy code</p>',
+            link: 'https://manager.aaf.edu.au'
+          },
+          {
+            title: 'Verifid',
+            image: verifid,
+            body:
+              '<p>This product is used my products to verify that users are students</p>' +
+              '<p>For example spotify may use this to prove that certain identity providers are </p>' +
+              '<p>Also allows admins of services to get an overview of who and what is accessing their services</p>' +
+              '<p>My duties involved mostly maintaining legacy code</p>',
+            link: ''
+          },
+          {
+            title: 'Rapid IDP Manager',
+            image: rapidIdpManager,
+            body:
+              '<p>This product is used as a bootstrapping tool for identity providers</p>' +
+              '<p>For example a university hosts an on premise shibboleth IDP to handle identity verification for scientist services</p>' +
+              '<p>Rapid idp serves as a way to turn these into a cloudformation and ec2 setup and a bunch of uis to allow for customization of said idp</p>' +
+              '<p>Resulting in less admins required at the university level</p>' +
+              '<p>My duties involved mentoring, implementing features, fixing bugs and refactoring legacy code</p>',
+            link: 'https://rapididp.aaf.edu.au'
+          }
+        ],
         agworld: [
           {
             title: 'Agworld',
@@ -701,22 +773,32 @@ export default {
       this.displays.strangeAnimals = false
       this.displays.simplisite = false
       this.displays.agworld = false
+      this.displays.aaf = false
       this.displays.personal = !this.displays.personal
     },
     simplisiteClick () {
       this.displays.strangeAnimals = false
       this.displays.agworld = false
+      this.displays.aaf = false
       this.displays.simplisite = !this.displays.simplisite
     },
     strangeAnimalsClick () {
       this.displays.simplisite = false
       this.displays.agworld = false
+      this.displays.aaf = false
       this.displays.strangeAnimals = !this.displays.strangeAnimals
     },
     agworldClick () {
       this.displays.simplisite = false
       this.displays.strangeAnimals = false
+      this.displays.aaf = false
       this.displays.agworld = !this.displays.agworld
+    },
+    aafClick () {
+      this.displays.simplisite = false
+      this.displays.strangeAnimals = false
+      this.displays.agworld = false
+      this.displays.aaf = !this.displays.aaf
     }
   }
 }

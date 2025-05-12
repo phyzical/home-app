@@ -538,7 +538,6 @@ export default {
           if (item.image.file) {
             arr.push({
               image: item.image.base64,
-              width: 50,
               height: 50
             })
           }
