@@ -292,6 +292,7 @@ export default {
           '<li>Implemented devops standard around metrics and alerts to empower developers to take control and ownership of their own projects</li>',
           '<li>Implemented devops standard git based deployments empowering owners of project to choose when and what to deploy via argocd</li>',
           '<li>Learned a lot about maintaining legacy code and improving it</li>',
+          '<li>Removing a legacy reporting system and implementing it into an another existing application, required backfilling ~65 million records across multiple environments</li>',
           '<li>Built a some what simple nodejs app that is used to smokescreen all apps in a blue green style of deployments, increasing confidence in deployments</li>',
           '<li>Implemented a simple service that used structs to normalize the data from multiple services to communicate with UptimeRobot to automate management of alerting of our internal services and customer connected service providers</li>',
           '<li>Enforced new CI/CD processes on github to help automate more parts of the developer workflow, allowed developers to push their code into the cloud with a simple command</li>',
