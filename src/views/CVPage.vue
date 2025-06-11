@@ -26,6 +26,21 @@
           </div>
           <div class="cv-entry uk-align-center">
             <b>Email:</b> <span> me@jackcarpenter.dev</span>
+            <br>
+            <b>Location:</b> <span> Perth, Western Australia</span>
+            <br>
+            <b>LinkedIn:</b> <span> <a v-href="linkedInData.profile.url">{{ linkedInData.profile.url }}</a></span>
+            <br>
+            <b>GitHub:</b><span> <a href="https://github.com/phyzical">https://github.com/phyzical</a></span>
+          </div>
+
+          <div class="cv-entry uk-align-center">
+            <span>I am a software engineer who graduated from curtin university with a Bachelors in Software Engineering.</span>
+            <br>
+            <span>I have {{ yearsExperience }} years of professional experience in the field and I am currently employed as a senior software engineer at {{ linkedInData.job.name }}.</span>
+            <br>
+            <span>I have experience making native mobile apps, websites and software, i have worked on both monoliths and microservice architectures.</span>
+            <br>
           </div>
         </div>
         <div class="uk-width-1-1 uk-divider-icon" />
@@ -258,12 +273,15 @@ import agworld from '../../src/images/projects/agworld.png'
 import aaf from '../../src/images/projects/aaf.png'
 import dominoes from '../../src/images/education/dominoes.png'
 import aboutMe from './AboutMePage.vue'
+import { currentYear } from '../helpers/helpers'
+import linkedInData from '../helpers/linkedInData.json'
 
 import { mapActions } from 'vuex'
 const pdfMakeFont = () => import('pdfmake/build/vfs_fonts')
 const pdfMake = () => import('pdfmake')
 
 export default {
+
   data () {
     const jobHistory = [
       {
@@ -567,6 +585,14 @@ export default {
       }
     }
   },
+  computed: {
+    yearsExperience () {
+      return currentYear() - 2014
+    },
+    linkedInData () {
+      return linkedInData
+    }
+  },
   mounted () {
     const self = this
     pdfMake().then((pdfMakePromise) => {
@@ -776,7 +802,7 @@ export default {
             margin: [0, 0, 0, 30]
           },
           {
-            layout: 'noBorders', // optional
+            layout: 'noBorders',
             table: {
               // headers are automatically repeated if the table spans over multiple pages
               // you can declare how many rows should be treated as headers
@@ -784,16 +810,34 @@ export default {
               widths: '50%',
               body: [
                 ['Email:', 'me@jackcarpenter.dev'],
-                ['Website:', 'https://jackcarpenter.dev']
+                ['Website:', 'https://jackcarpenter.dev'],
+                ['Location:', 'Perth, Western Australia'],
+                ['LinkedIn:', linkedInData.profile.url],
+                ['GitHub:', 'https://github.com/phyzical']
               ]
             }
+          },
+          {
+            layout: 'noBorders',
+            table: {
+              // headers are automatically repeated if the table spans over multiple pages
+              // you can declare how many rows should be treated as headers
+              headerRows: 0,
+              body: [
+                ['I am a software engineer who graduated from curtin university with a Bachelors in Software Engineering.'],
+                [`I have ${this.yearsExperience} years of professional experience in the field and I am currently employed as a senior software engineer at ${linkedInData.job.name}.`],
+                ['I have experience making native mobile apps, websites and software, i have worked on both monoliths and microservice architectures.']
+              ]
+            },
+            margin: [0, 20, 0, 20]
+
           },
           {
             text: 'Employment History',
             style: 'header'
           },
           {
-            layout: 'noBorders', // optional
+            layout: 'noBorders',
             table: {
               // headers are automatically repeated if the table spans over multiple pages
               // you can declare how many rows should be treated as headers
@@ -807,7 +851,7 @@ export default {
             style: 'header'
           },
           {
-            layout: 'noBorders', // optional
+            layout: 'noBorders',
             table: {
               // headers are automatically repeated if the table spans over multiple pages
               // you can declare how many rows should be treated as headers
@@ -838,7 +882,7 @@ export default {
             style: 'header'
           },
           {
-            layout: 'noBorders', // optional
+            layout: 'noBorders',
             table: {
               // headers are automatically repeated if the table spans over multiple pages
               // you can declare how many rows should be treated as headers
@@ -879,7 +923,7 @@ export default {
           //   style: 'header'
           // },
           // {
-          //   layout: 'noBorders', // optional
+          //   layout: 'noBorders',
           //   table: {
           //     // headers are automatically repeated if the table spans over multiple pages
           //     // you can declare how many rows should be treated as headers
