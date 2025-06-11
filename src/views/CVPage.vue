@@ -112,14 +112,45 @@
               <div
                 v-for="(item, x) in entry.headerContent"
                 :key="`job-history-header-content-${i}-${x}`"
+                class="cv-entry-item"
                 v-html="item"
               />
             </div>
-            <div class="uk-card-body">
+            <div>
+              <b v-if="entry.content.length > 1">
+                Roles and Responsibilities:
+              </b>
               <ul>
                 <div
                   v-for="(item, x) in entry.content"
                   :key="`job-history-content-${i}-${x}`"
+                  class="cv-entry-item"
+                  v-html="item"
+                />
+              </ul>
+            </div>
+            <div>
+              <b v-if="entry.achievements.length > 1">
+                Achievements:
+              </b>
+              <ul>
+                <div
+                  v-for="(item, x) in entry.achievements"
+                  :key="`job-history-achievements-${i}-${x}`"
+                  class="cv-entry-item"
+                  v-html="item"
+                />
+              </ul>
+            </div>
+            <div>
+              <b v-if="entry.achievements.length > 1">
+                Achievements:
+              </b>
+              <ul>
+                <div
+                  v-for="(item, x) in entry.achievements"
+                  :key="`job-history-achievements-${i}-${x}`"
+                  class="cv-entry-item"
                   v-html="item"
                 />
               </ul>
@@ -182,7 +213,7 @@
             />
           </div>
         </div>
-        <div class="uk-width-1-1 uk-divider-icon" />
+        <!-- <div class="uk-width-1-1 uk-divider-icon" />
         <div
           uk-scrollspy="cls:uk-animation-slide-left"
           class="uk-width-1-1 uk-grid cv-category uk-grid-divider"
@@ -212,7 +243,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -239,29 +270,50 @@ export default {
         headerContent: [
           '<b>May 2022 - Current</b>',
           '<span>Australian Access Federation</span>',
-          '<span><b>Position:</b> Senior Software Developer</span>'
+          '<b>Position:</b>',
+          '<span>Senior Software Developer</span>'
         ],
         image: {
           file: aaf,
           base64: null
         },
         content: [
-          '<li>Maintain various ruby based projects</li>',
+          '<li>Maintained Current/legacy ruby and kotlin projects</li>',
+          '<li>Experimented with new tools to see if they would help in projects or for developer QOL</li>',
+          '<li>Provided experience to learning developers through guidance and pair programming</li>',
+          '<li>Communicating with stakeholders to ensure the expected outcome in features and bug fixes is achieved</li>',
+          '<li>Kept on top of CVES and dependency updates with the assistance of tools like dependabot and renovate</li>',
+          '<li>Maintained the infrastructure for the projects in AWS K8s/github actions, actioned alerts when fired to ensure high uptime reliability</li>'
+        ],
+        achievements: [
           '<li>Moved current infrastructure away from ec2 boxes over to a container based EKS environment</li>',
-          '<li>Migrated existing infrastructure on AWS away from cloudformation over to terraform</li>',
-          '<li>Implemented devop standard around metrics and alerts to empower developers to take control and ownership of their own projects</li>',
-          '<li>Refactored legacy code to be a more readable, reusable replacement</li>',
-          '<li>Upgraded various frameworks to be up to date using tools like dependabot and renovate</li>',
+          '<li>Migrated existing infrastructure on AWS away from cloudformation over to terraform to a much more git based infrastructure</li>',
+          '<li>Implemented devops standard around metrics and alerts to empower developers to take control and ownership of their own projects</li>',
+          '<li>Implemented devops standard git based deployments empowering owners of project to choose when and what to deploy via argocd</li>',
           '<li>Learned a lot about maintaining legacy code and improving it</li>',
-          '<li>Enforced new CI/CD processes on github to help automate more parts of the developer workflow</li>',
-          '<li>Migrated the current deployment cycles away from a once in a blue moon to a daily cycle with the hopes to make each commit to production</li>'
+          '<li>Built a somewhat simple nodejs app that is used to smokescreen all apps ina  blue green style of deployments, increasing confidence in deployments</li>',
+          '<li>Implemented a simple service that used struct to nomralize the data from multiple services to communicate with UptimeRobot to automate management of alerting of our internal services and customer connected service providers</li>',
+          '<li>Enforced new CI/CD processes on github to help automate more parts of the developer workflow, allowed developers to push their code into the cloud with a simple command</li>',
+          '<li>Migrated the current deployment cycles away from a once a month deployment cycle with a approval from management process to a daily cycle with the future hopes to make each commit to production</li>'
+        ],
+        technologies: [
+          '<li>Ruby on Rails</li>',
+          '<li>Kotlin</li>',
+          '<li>Javascript</li>',
+          '<li>Typescript</li>',
+          '<li>AWS</li>',
+          '<li>Terraform</li>',
+          '<li>Docker</li>',
+          '<li>Kubernetes</li>',
+          '<li>GitHub Actions</li>'
         ]
       },
       {
         headerContent: [
           '<b>September 2020 - May 2022</b>',
           '<span>Agworld</span>',
-          '<span><b>Position:</b> Full Stack Software Developer</span>'
+          '<b>Position:</b>',
+          '<span>Full Stack Software Developer</span>'
         ],
         image: {
           file: agworld,
@@ -273,15 +325,30 @@ export default {
           '<li>Provided experience to learning developers through guidance</li>',
           '<li>Worked in the infrastructure team depending on cycle</li>',
           '<li>Refactored legacy code to be a more readable, reusable replacement</li>',
-          '<li>Upgraded various frameworks to be up to date</li>',
-          '<li>Learned a lot about maintaining legacy code and improving it</li>'
+          '<li>Upgraded various frameworks to be up to date</li>'
+        ],
+        achievements: [
+          '<li>Learned a lot about maintaining legacy code and improving it</li>',
+          '<li>Took a 12 year old react project that was stuck at react 14 up to react 18</li>',
+          '<li>Upgraded a legacy john deere api implementation over to its current version maintaining functionality</li>'
+        ],
+        technologies: [
+          '<li>Ruby on Rails</li>',
+          '<li>React</li>',
+          '<li>Javascript</li>',
+          '<li>AWS</li>',
+          '<li>Docker</li>',
+          '<li>Kubernetes</li>',
+          '<li>GitHub Actions</li>',
+          '<li>Buildkite</li>'
         ]
       },
       {
         headerContent: [
           '<b>May 2018 - August 2020</b>',
           '<span>Strange Animals</span>',
-          '<span><b>Position:</b> Lead Software Developer</span>'
+          '<b>Position:</b>',
+          '<span>Lead Software Developer</span>'
         ],
         image: {
           file: strangeAnimals,
@@ -293,16 +360,33 @@ export default {
           '<li>Created and maintained various React-Native native mobile apps</li>',
           '<li>Experience as tech lead</li>',
           '<li>Provided experience to learning developers through guidance</li>',
-          '<li>Created project specification documents</li>',
-          '<li>Built infrastructure used by whole company simplify every day tasks</li>',
+          '<li>Created project specification documents</li>'
+        ],
+        achievements: [
+          '<li>Built 6 CMS sites with the company</li>',
+          '<li>Built 2 react native apps with the company</li>',
+          '<li>Built infrastructure used by whole company simplify every day tasks, a frontend dev could deploy</li>',
           '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>'
+        ],
+        technologies: [
+          '<li>PHP</li>',
+          '<li>Laravel</li>',
+          '<li>Javascript</li>',
+          '<li>Typescript</li>',
+          '<li>React</li>',
+          '<li>React-Native</li>',
+          '<li>AWS</li>',
+          '<li>Docker</li>',
+          '<li>Kubernetes</li>',
+          '<li>GitHub Actions</li>'
         ]
       },
       {
         headerContent: [
           '<b>February 2015 - May 2018</b>',
           '<span>Simplisite Business Solutions</span>',
-          '<span><b>Position:</b> Junior Software Developer - Senior Software Developer</span>'
+          '<b>Position:</b>',
+          '<span>Junior Software Developer - Senior Software Developer</span>'
         ],
         image: {
           file: simplisite,
@@ -316,13 +400,31 @@ export default {
           '<li>Worked in teams</li>',
           '<li>Created project specification documents</li>',
           '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>'
+        ],
+        achievements: [
+          '<li>Built 6 CMS sites with the company</li>',
+          '<li>Built 2 react native apps with the company</li>',
+          '<li>Built infrastructure used by whole company simplify every day tasks, a frontend dev could deploy</li>'
+        ],
+        technologies: [
+          '<li>PHP</li>',
+          '<li>Laravel</li>',
+          '<li>Javascript</li>',
+          '<li>Typescript</li>',
+          '<li>React</li>',
+          '<li>React-Native</li>',
+          '<li>AWS</li>',
+          '<li>Docker</li>',
+          '<li>Kubernetes</li>',
+          '<li>GitHub Actions</li>'
         ]
       },
       {
         headerContent: [
           '<b>September 2010 - February 2015</b>',
           '<span>Dominoes, Mandurah</span>',
-          '<span><b>Position:</b> Manager/Delivery Driver</span>'
+          '<b>Position:</b>',
+          '<span>Manager/Delivery Driver</span>'
         ],
         image: {
           file: dominoes,
@@ -334,6 +436,16 @@ export default {
           '<li>Managerial duties</li>',
           '<li>Team leading skills</li>',
           '<li>Store running responsibilities</li>'
+        ],
+        achievements: [
+          '<li>Learned a lot about customer service and how to deal with customers</li>',
+          '<li>Learned a lot about running a business and how to manage staff</li>',
+          '<li>Learned a lot about working in a team environment</li>'
+        ],
+        technologies: [
+          '<li>POS Systems</li>',
+          '<li>Microsoft Office</li>',
+          '<li>Google Docs</li>'
         ]
       }
     ]
@@ -348,6 +460,12 @@ export default {
           base64: null
         },
         content: [
+          ''
+        ],
+        achievements: [
+          ''
+        ],
+        technologies: [
           ''
         ]
       })
@@ -535,27 +653,52 @@ export default {
       const jobHistory = this.cv.jobHistory
         .map((item, i) => {
           const arr = []
-          if (item.image.file) {
-            arr.push({
-              image: item.image.base64,
-              width: 50,
-              height: 50
-            })
-          }
+          // if (item.image.file) {
+          //   arr.push({
+          //     image: item.image.base64,
+          //     width: 50,
+          //     height: 50
+          //   })
+          // }
           return arr.concat([
             ...item.headerContent.map((subItem, x) => {
               return {
                 text: this.stripHtml(subItem),
                 style: {
-                  bold: !x
-                }
+                  bold: x % 2 === 0
+                },
+                margin: x % 2 !== 0 ? [0, 0, 0, 20] : []
               }
             }),
             {
+              text: 'Roles and Responsibilities',
+              style: 'subHeader',
+              margin: [30, 0, 0, 20]
+            },
+            {
               ul: item.content.map((subItem) => this.stripHtml(subItem)),
               style: 'list',
-              margin: [30, 20, 0, 20]
-              // pageBreak: i === 1 ? 'after' : null
+              margin: [30, 0, 0, 20]
+            },
+            {
+              text: 'Achievements',
+              style: 'subHeader',
+              margin: [30, 0, 0, 20]
+            },
+            {
+              ul: item.achievements.map((subItem) => this.stripHtml(subItem)),
+              style: 'list',
+              margin: [30, 0, 0, 20]
+            },
+            {
+              text: 'Technologies',
+              style: 'subHeader',
+              margin: [30, 0, 0, 20]
+            },
+            {
+              ul: item.technologies.map((subItem) => this.stripHtml(subItem)),
+              style: 'list',
+              margin: [30, 0, 0, 20]
             }
           ])
         })
@@ -753,6 +896,10 @@ export default {
           },
           header: {
             fontSize: 22,
+            bold: true
+          },
+          subHeader: {
+            fontSize: 16,
             bold: true
           },
           list: {
