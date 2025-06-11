@@ -278,7 +278,8 @@ export default {
           base64: null
         },
         content: [
-          '<li>Maintained Current/legacy ruby and kotlin projects</li>',
+          '<li>Maintained current/legacy ruby and kotlin projects</li>',
+          '<li>Scoped and implemented new features and fix bugs raised by stakeholders</li>',
           '<li>Experimented with new tools to see if they would help in projects or for developer QOL</li>',
           '<li>Provided experience to learning developers through guidance and pair programming</li>',
           '<li>Communicating with stakeholders to ensure the expected outcome in features and bug fixes is achieved</li>',
@@ -332,7 +333,7 @@ export default {
           '<li>Took a 12 year old react project that was stuck at react 14 up to react 18</li>',
           '<li>Upgraded a legacy john deere api implementation over to the latest version maintaining functionality in the process</li>',
           '<li>Implemented a simple icon uploading flow for farmers to be able to use custom pins on the map for notify farm hands of any dangers</li>',
-          '<li>Helped begin implementation of enforcing various compliance standards with the requirement of it having to be very flexible due to lack of requirements at the time</li>'
+          '<li>Helped begin implementation of enforcing various compliance rule system with the requirement of it having to be very flexible due to lack of requirements at the time </li>'
         ],
         technologies: [
           '<li>Ruby on Rails</li>',
@@ -733,22 +734,22 @@ export default {
       const additionalSkills = this.cv.additionalSkills.map((item) =>
         this.stripHtml(item)
       )
-      const references = this.cv.references.map((item) => [
-        // {
-        //   image: item.image.base64,
-        //   width: 50,
-        //   height: 50
-        // },
-        ...item.content.map((subItem, i) => {
-          return {
-            text: this.stripHtml(subItem),
-            style: {
-              bold: !i
-            },
-            margin: [0, i === 1 ? 20 : 0, 0, 0]
-          }
-        })
-      ])
+      // const references = this.cv.references.map((item) => [
+      //   // {
+      //   //   image: item.image.base64,
+      //   //   width: 50,
+      //   //   height: 50
+      //   // },
+      //   ...item.content.map((subItem, i) => {
+      //     return {
+      //       text: this.stripHtml(subItem),
+      //       style: {
+      //         bold: !i
+      //       },
+      //       margin: [0, i === 1 ? 20 : 0, 0, 0]
+      //     }
+      //   })
+      // ])
       const hobbiesAndInterests = this.cv.hobbiesAndInterests.map((item) =>
         this.stripHtml(item)
       )
@@ -798,8 +799,7 @@ export default {
               headerRows: 0,
               body: jobHistory
             },
-            margin: [0, 20, 0, 0],
-            pageBreak: 'after'
+            margin: [0, 20, 0, 0]
           },
           {
             text: 'Education',
@@ -845,8 +845,7 @@ export default {
               widths: '50%',
               body: technicalSkills
             },
-            margin: [0, 15, 0, 0],
-            pageBreak: 'after'
+            margin: [0, 15, 0, 0]
           },
           {
             text: 'Additional Skills',
@@ -869,27 +868,26 @@ export default {
             // to treat a paragraph as a bulleted list, set an array of items under the ul key
             ul: hobbiesAndInterests,
             margin: [170, 20, 0, 0],
-            style: 'list',
-            pageBreak: 'after'
-          },
-          hr,
-          hr,
-          hr,
-          {
-            text: 'References',
-            style: 'header'
-          },
-          {
-            layout: 'noBorders', // optional
-            table: {
-              // headers are automatically repeated if the table spans over multiple pages
-              // you can declare how many rows should be treated as headers
-              headerRows: 0,
-              widths: '50%',
-              body: [references]
-            },
-            margin: [0, 20, 0, 0]
+            style: 'list'
           }
+          // hr,
+          // hr,
+          // hr,
+          // {
+          //   text: 'References',
+          //   style: 'header'
+          // },
+          // {
+          //   layout: 'noBorders', // optional
+          //   table: {
+          //     // headers are automatically repeated if the table spans over multiple pages
+          //     // you can declare how many rows should be treated as headers
+          //     headerRows: 0,
+          //     widths: '50%',
+          //     body: [references]
+          //   },
+          //   margin: [0, 20, 0, 0]
+          // }
         ],
         styles: {
           title: {
