@@ -12,14 +12,14 @@
     "pdfmake": "^0.1.66",
     "typedarray-slice": "1.0.4",
     "uikit": "3.23.9",
-    "vue": "^3.0.0",
+    "vue": "^2.0.0",
     "es6-object-assign": "1.1.0",
     "vue-loading-overlay": "3.4.3",
-    "vue-router": "^4.0.0",
+    "vue-router": "^3.0.0",
     "vuelidate": "0.7.7",
     "vuelidate-error-extractor": "2.4.1",
     "vuex": "^3.5.1",
-    "vuex-persistedstate": "^4.0.0",
+    "vuex-persistedstate": "^3.0.0",
     "register-service-worker": "1.7.2"
   },
   "devDependencies": {

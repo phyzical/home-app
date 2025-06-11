@@ -286,13 +286,13 @@ export default {
           '<li>Maintained the infrastructure for the projects in AWS K8s/github actions, actioned alerts when fired to ensure high uptime reliability</li>'
         ],
         achievements: [
-          '<li>Moved current infrastructure away from ec2 boxes over to a container based EKS environment</li>',
+          '<li>Moved The infrastructure away from ec2 boxes over to a container based EKS environment</li>',
           '<li>Migrated existing infrastructure on AWS away from cloudformation over to terraform to a much more git based infrastructure</li>',
           '<li>Implemented devops standard around metrics and alerts to empower developers to take control and ownership of their own projects</li>',
           '<li>Implemented devops standard git based deployments empowering owners of project to choose when and what to deploy via argocd</li>',
           '<li>Learned a lot about maintaining legacy code and improving it</li>',
-          '<li>Built a somewhat simple nodejs app that is used to smokescreen all apps ina  blue green style of deployments, increasing confidence in deployments</li>',
-          '<li>Implemented a simple service that used struct to nomralize the data from multiple services to communicate with UptimeRobot to automate management of alerting of our internal services and customer connected service providers</li>',
+          '<li>Built a some what simple nodejs app that is used to smokescreen all apps in a blue green style of deployments, increasing confidence in deployments</li>',
+          '<li>Implemented a simple service that used structs to normalize the data from multiple services to communicate with UptimeRobot to automate management of alerting of our internal services and customer connected service providers</li>',
           '<li>Enforced new CI/CD processes on github to help automate more parts of the developer workflow, allowed developers to push their code into the cloud with a simple command</li>',
           '<li>Migrated the current deployment cycles away from a once a month deployment cycle with a approval from management process to a daily cycle with the future hopes to make each commit to production</li>'
         ],
@@ -330,7 +330,9 @@ export default {
         achievements: [
           '<li>Learned a lot about maintaining legacy code and improving it</li>',
           '<li>Took a 12 year old react project that was stuck at react 14 up to react 18</li>',
-          '<li>Upgraded a legacy john deere api implementation over to its current version maintaining functionality</li>'
+          '<li>Upgraded a legacy john deere api implementation over to the latest version maintaining functionality in the process</li>',
+          '<li>Implemented a simple icon uploading flow for farmers to be able to use custom pins on the map for notify farm hands of any dangers</li>',
+          '<li>Helped begin implementation of enforcing various compliance standards with the requirement of it having to be very flexible due to lack of requirements at the time</li>'
         ],
         technologies: [
           '<li>Ruby on Rails</li>',
@@ -363,10 +365,11 @@ export default {
           '<li>Created project specification documents</li>'
         ],
         achievements: [
-          '<li>Built 6 CMS sites with the company</li>',
-          '<li>Built 2 react native apps with the company</li>',
+          '<li>Built many CMS sites</li>',
+          '<li>Built a few react native apps</li>',
           '<li>Built infrastructure used by whole company simplify every day tasks, a frontend dev could deploy</li>',
-          '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>'
+          '<li>Implemented CI/CD services for more streamlined deployment and testing processes</li>',
+          '<li>Company won awards for design of sites (cant take direct credit, but i helped the frontend brains get there)</li>'
         ],
         technologies: [
           '<li>PHP</li>',
@@ -650,7 +653,7 @@ export default {
           })
         )
         .chunk_inefficient(2)
-      const jobHistory = this.cv.jobHistory
+      const jobHistory = this.cv.jobHistory.filter((item) => item.content.length > 1)
         .map((item, i) => {
           const arr = []
           // if (item.image.file) {
@@ -702,13 +705,13 @@ export default {
             }
           ])
         })
-        .chunk_inefficient(2)
+        .chunk_inefficient(1)
       const educationHistory = this.cv.educationHistory.map((item) => [
-        {
-          image: item.image.base64,
-          width: 50,
-          height: 50
-        },
+        // {
+        //   image: item.image.base64,
+        //   width: 50,
+        //   height: 50
+        // },
         ...item.headerContent.map((subItem, i) => {
           return {
             text: this.stripHtml(subItem),
@@ -731,11 +734,11 @@ export default {
         this.stripHtml(item)
       )
       const references = this.cv.references.map((item) => [
-        {
-          image: item.image.base64,
-          width: 50,
-          height: 50
-        },
+        // {
+        //   image: item.image.base64,
+        //   width: 50,
+        //   height: 50
+        // },
         ...item.content.map((subItem, i) => {
           return {
             text: this.stripHtml(subItem),
@@ -783,6 +786,49 @@ export default {
               ]
             }
           },
+          {
+            text: 'Employment History',
+            style: 'header'
+          },
+          {
+            layout: 'noBorders', // optional
+            table: {
+              // headers are automatically repeated if the table spans over multiple pages
+              // you can declare how many rows should be treated as headers
+              headerRows: 0,
+              body: jobHistory
+            },
+            margin: [0, 20, 0, 0],
+            pageBreak: 'after'
+          },
+          {
+            text: 'Education',
+            style: 'header'
+          },
+          {
+            layout: 'noBorders', // optional
+            table: {
+              // headers are automatically repeated if the table spans over multiple pages
+              // you can declare how many rows should be treated as headers
+              headerRows: 0,
+              widths: '50%',
+              body: [educationHistory],
+              margin: [0, 20, 0, 0]
+            }
+          },
+          hr,
+          hr,
+          hr,
+          {
+            text: 'Short Courses',
+            style: 'header'
+          },
+          {
+            // to treat a paragraph as a bulleted list, set an array of items under the ul key
+            ul: shortCourses,
+            margin: [170, 20, 0, 0],
+            style: 'list'
+          },
           hr,
           hr,
           hr,
@@ -826,50 +872,6 @@ export default {
             style: 'list',
             pageBreak: 'after'
           },
-          {
-            text: 'Employment History',
-            style: 'header'
-          },
-          {
-            layout: 'noBorders', // optional
-            table: {
-              // headers are automatically repeated if the table spans over multiple pages
-              // you can declare how many rows should be treated as headers
-              headerRows: 0,
-              widths: '50%',
-              body: jobHistory
-            },
-            margin: [0, 20, 0, 0],
-            pageBreak: 'after'
-          },
-          {
-            text: 'Education',
-            style: 'header'
-          },
-          {
-            layout: 'noBorders', // optional
-            table: {
-              // headers are automatically repeated if the table spans over multiple pages
-              // you can declare how many rows should be treated as headers
-              headerRows: 0,
-              widths: '50%',
-              body: [educationHistory],
-              margin: [0, 20, 0, 0]
-            }
-          },
-          hr,
-          hr,
-          hr,
-          {
-            text: 'Short Courses',
-            style: 'header'
-          },
-          {
-            // to treat a paragraph as a bulleted list, set an array of items under the ul key
-            ul: shortCourses,
-            margin: [170, 20, 0, 0],
-            style: 'list'
-          },
           hr,
           hr,
           hr,
@@ -900,7 +902,8 @@ export default {
           },
           subHeader: {
             fontSize: 16,
-            bold: true
+            bold: true,
+            alignment: 'left'
           },
           list: {
             alignment: 'left'
