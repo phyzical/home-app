@@ -4,10 +4,13 @@
     },
     "uni": {
         "name": "Curtin University",
-        "url": "https://au.linkedin.com/school/curtinuniversity/"
+        "url": "https://au.linkedin.com/school/curtinuniversity/",
+        "degree": "Bachelor of Software Engineering"
     },
     "job": {
+        "startDate": "May 2022",
         "name": "Australian Access Federation Ltd (AAF)",
-        "url": "https://au.linkedin.com/company/australian-access-federation-inc-"
+        "url": "https://au.linkedin.com/company/australian-access-federation-inc-",
+        "title": "Senior software engineer"
     }
 }

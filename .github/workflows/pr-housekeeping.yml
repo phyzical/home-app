@@ -41,28 +41,3 @@ jobs:
                 issue_number: pull_number,
                 assignees: [actor]
             });
-
-            const titleRegex = new RegExp(/.*upgrade|updating.*/,"i")
-            if (actor_id == "5182053" && actor == "phyzical" && titleRegex.test(title) && labelNames.some(item => allowedLabels.includes(item))) {
-                // Sadly the rest api does not support enableAutomerge
-                const mutation = `mutation($pullRequestId:ID!, $mergeMethod:PullRequestMergeMethod) {
-                    enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: $mergeMethod}) {
-                        clientMutationId
-                    }
-                }`
-                // Automerge
-                await github.graphql(mutation, {
-                    pullRequestId: node_id, mergeMethod: "SQUASH"
-                })
-
-                //If anything is common between the two list of labels auto approve
-                //if (labelNames.some(item => allowedLabels.includes(item))) {
-                    // Autoapprove
-                    //await github.rest.pulls.createReview({
-                       // owner,
-                       // repo,
-                       // pull_number,
-                       // event: "APPROVE"
-                   // })
-                //}
-            }

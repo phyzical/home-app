@@ -21,23 +21,23 @@
         >
           <div class="uk-width-1-1">
             <h2 class="cv-title uk-text-center uk-align-center">
-              Jack Carpenter
+              {{ cv.aboutMe.name }}
             </h2>
           </div>
           <div class="cv-entry uk-align-center">
-            <b>Email:</b> <span> me@jackcarpenter.dev</span>
+            <b>Email:</b> <span> {{ cv.aboutMe.email }}</span>
             <br>
-            <b>Location:</b> <span> Perth, Western Australia</span>
+            <b>Location:</b> <span> {{ cv.aboutMe.location }}</span>
             <br>
-            <b>LinkedIn:</b> <span> <a v-href="linkedInData.profile.url">{{ linkedInData.profile.url }}</a></span>
+            <b>LinkedIn:</b> <span> <a v-href="cv.aboutMe.linkedIn">{{ cv.aboutMe.linkedIn }}</a></span>
             <br>
-            <b>GitHub:</b><span> <a href="https://github.com/phyzical">https://github.com/phyzical</a></span>
+            <b>GitHub:</b><span> <a v-href="cv.aboutMe.github">{{ cv.aboutMe.github }}</a></span>
           </div>
 
           <div class="cv-entry uk-align-center">
-            <span>I am a software engineer who graduated from curtin university with a Bachelors in Software Engineering.</span>
+            <span>I am a Software Engineer who graduated from {{ cv.aboutMe.uniName }} with a {{ cv.aboutMe.uniDegree }}.</span>
             <br>
-            <span>I have {{ yearsExperience }} years of professional experience in the field and I am currently employed as a senior software engineer at {{ linkedInData.job.name }}.</span>
+            <span>I have {{ yearsExperience }} years of professional experience in the field and I am currently employed as a {{ cv.aboutMe.jobTitle }} at {{ cv.aboutMe.jobName }}.</span>
             <br>
             <span>I have experience making native mobile apps, websites and software, i have worked on both monoliths and microservice architectures.</span>
             <br>
@@ -228,37 +228,6 @@
             />
           </div>
         </div>
-        <!-- <div class="uk-width-1-1 uk-divider-icon" />
-        <div
-          uk-scrollspy="cls:uk-animation-slide-left"
-          class="uk-width-1-1 uk-grid cv-category uk-grid-divider"
-          uk-grid
-        >
-          <div class="uk-width-1-1">
-            <h2 class="cv-title uk-text-center uk-align-center">
-              References
-            </h2>
-          </div>
-          <div
-            v-for="(entry, i) in cv.references"
-            :key="`references-${i}`"
-            class="uk-width-1-1 cv-entry"
-          >
-            <div>
-              <img
-                :data-src="entry.image.file"
-                uk-img
-              >
-              <div
-                v-for="(item, x) in entry.content"
-                :key="`reference-entry-${i}-${x}`"
-                class="uk-width-1-1 cv-entry"
-              >
-                <div v-html="item" />
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -286,10 +255,10 @@ export default {
     const jobHistory = [
       {
         headerContent: [
-          '<b>May 2022 - Current</b>',
-          '<span>Australian Access Federation</span>',
+          `<b>${linkedInData.job.startDate}</b>`,
+          `<span>${linkedInData.job.name}</span>`,
           '<b>Position:</b>',
-          '<span>Senior Software Developer</span>'
+          `<span>${linkedInData.job.title}</span>`
         ],
         image: {
           file: aaf,
@@ -495,6 +464,18 @@ export default {
     }
     return {
       cv: {
+        aboutMe: {
+          uniName: linkedInData.uni.name,
+          uniDegree: linkedInData.uni.degree,
+          jobTitle: linkedInData.job.title,
+          jobName: linkedInData.job.name,
+          name: 'Jack Carpenter',
+          email: 'me@jackcarpenter.dev',
+          website: 'https://jackcarpenter.dev',
+          location: 'Perth, Western Australia',
+          linkedIn: linkedInData.profile.url,
+          github: 'https://github.com/phyzical'
+        },
         technicalSkills: aboutMe.data().experiences.map(x => x.categories.length ? `<div class='uk-width-1-1'><b>${x.title}:</b></div><span>${x.categories.map(x => x.title).join(', ')}.</span>` : ``),
         additionalSkills: [
           '<li>Experience leading teams</li>',
@@ -543,19 +524,6 @@ export default {
               base64: null
             }
           }
-          //  TODO:
-          // {
-          //   content: [
-          //     '<p>Troy Worth</p>',
-          //     '<p>Ex-Director, Simplisite</p>',
-          //     '<p>M: 0419 966 794</p>',
-          //     '<p>E: troyw@elitecrickettraining.com.au</p>'
-          //   ],
-          //   image: {
-          //     file: simplisite,
-          //     base64: null
-          //   }
-          // }
         ],
         educationHistory: [
           {
@@ -684,13 +652,6 @@ export default {
       const jobHistory = this.cv.jobHistory.filter((item) => item.content.length > 1)
         .map((item, i) => {
           const arr = []
-          // if (item.image.file) {
-          //   arr.push({
-          //     image: item.image.base64,
-          //     width: 50,
-          //     height: 50
-          //   })
-          // }
           return arr.concat([
             ...item.headerContent.map((subItem, x) => {
               return {
@@ -735,11 +696,6 @@ export default {
         })
         .chunk_inefficient(1)
       const educationHistory = this.cv.educationHistory.map((item) => [
-        // {
-        //   image: item.image.base64,
-        //   width: 50,
-        //   height: 50
-        // },
         ...item.headerContent.map((subItem, i) => {
           return {
             text: this.stripHtml(subItem),
@@ -761,22 +717,6 @@ export default {
       const additionalSkills = this.cv.additionalSkills.map((item) =>
         this.stripHtml(item)
       )
-      // const references = this.cv.references.map((item) => [
-      //   // {
-      //   //   image: item.image.base64,
-      //   //   width: 50,
-      //   //   height: 50
-      //   // },
-      //   ...item.content.map((subItem, i) => {
-      //     return {
-      //       text: this.stripHtml(subItem),
-      //       style: {
-      //         bold: !i
-      //       },
-      //       margin: [0, i === 1 ? 20 : 0, 0, 0]
-      //     }
-      //   })
-      // ])
       const hobbiesAndInterests = this.cv.hobbiesAndInterests.map((item) =>
         this.stripHtml(item)
       )
@@ -790,14 +730,14 @@ export default {
         footer: function (currentPage, pageCount) {
           return currentPage.toString() + ' of ' + pageCount
         },
-        header: 'Jack Carpenter',
+        header: this.cv.aboutMe.name,
         info: {
-          title: 'Jack Carpenter CV',
-          author: 'Jack Carpenter'
+          title: `${this.cv.aboutMe.name} CV`,
+          author: this.cv.aboutMe.name
         },
         content: [
           {
-            text: 'Jack Carpenter',
+            text: this.cv.aboutMe.name,
             style: 'title',
             margin: [0, 0, 0, 30]
           },
@@ -809,11 +749,11 @@ export default {
               headerRows: 0,
               widths: '50%',
               body: [
-                ['Email:', 'me@jackcarpenter.dev'],
-                ['Website:', 'https://jackcarpenter.dev'],
-                ['Location:', 'Perth, Western Australia'],
-                ['LinkedIn:', linkedInData.profile.url],
-                ['GitHub:', 'https://github.com/phyzical']
+                ['Email:', this.cv.aboutMe.email],
+                ['Website:', this.cv.aboutMe.website],
+                ['Location:', this.cv.aboutMe.location],
+                ['LinkedIn:', this.cv.aboutMe.linkedIn],
+                ['GitHub:', this.cv.aboutMe.github]
               ]
             }
           },
@@ -824,8 +764,8 @@ export default {
               // you can declare how many rows should be treated as headers
               headerRows: 0,
               body: [
-                ['I am a software engineer who graduated from curtin university with a Bachelors in Software Engineering.'],
-                [`I have ${this.yearsExperience} years of professional experience in the field and I am currently employed as a senior software engineer at ${linkedInData.job.name}.`],
+                [`I am a Software Engineer who graduated from ${this.cv.aboutMe.uniName} with a ${this.cv.aboutMe.uniDegree}.`],
+                [`I have ${this.yearsExperience} years of professional experience in the field and I am currently employed as a ${this.cv.aboutMe.jobTitle} at ${this.cv.aboutMe.jobName}.`],
                 ['I have experience making native mobile apps, websites and software, i have worked on both monoliths and microservice architectures.']
               ]
             },
@@ -959,7 +899,7 @@ export default {
       pdfMake().then((pdfMakePromise) => {
         pdfMakePromise
           .createPdf(docDefinition)
-          .download('Jack Carpenter CV.pdf')
+          .download(`${this.cv.aboutMe.name} CV.pdf`)
       })
     }
   }
