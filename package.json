@@ -24,9 +24,9 @@
   },
   "devDependencies": {
     "core-js": "3.43.0",
-    "@babel/core": "7.27.4",
+    "@babel/core": "7.27.7",
     "@babel/plugin-transform-modules-commonjs": "7.27.1",
-    "@babel/plugin-transform-destructuring": "7.27.3",
+    "@babel/plugin-transform-destructuring": "7.27.7",
     "@vue/cli-plugin-babel": "^4",
     "@vue/cli-plugin-eslint": "^4",
     "@vue/cli-plugin-pwa": "^4",
