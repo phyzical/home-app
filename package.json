@@ -23,7 +23,7 @@
     "register-service-worker": "1.7.2"
   },
   "devDependencies": {
-    "core-js": "3.45.1",
+    "core-js": "3.46.0",
     "@babel/core": "7.28.4",
     "@babel/plugin-transform-modules-commonjs": "7.27.1",
     "@babel/plugin-transform-destructuring": "7.28.0",
