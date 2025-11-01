@@ -9,7 +9,7 @@
     "serve": "vue-cli-service serve"
   },
   "dependencies": {
-    "pdfmake": "^0.1.66",
+    "pdfmake": "^0.2.0",
     "typedarray-slice": "1.0.4",
     "uikit": "<=3.23.13",
     "vue": "<4",
